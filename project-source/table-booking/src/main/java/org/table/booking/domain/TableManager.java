@@ -44,8 +44,8 @@ public class TableManager {
 		return t;
 	}
 
-	public void show_turns() {
-		throw new UnsupportedOperationException();
+	public static LinkedList<Table> show_turns() {
+		return show_table_state();
 	}
 
 	public static int mark_table_state(Table t) {

@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>es.tslabs</groupId>
 		<artifactId>restaurant-chain</artifactId>
-		<version>0.5-SNAPSHOT</version>
+		<version>0.6-SNAPSHOT</version>
 	</parent>
 	<artifactId>table-booking</artifactId>
 	<name>table-booking</name>
