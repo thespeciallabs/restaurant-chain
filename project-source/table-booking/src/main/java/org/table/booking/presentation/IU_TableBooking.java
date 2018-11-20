@@ -1,5 +1,6 @@
 package org.table.booking.presentation;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import org.table.booking.domain.Table;
@@ -42,11 +43,14 @@ public class IU_TableBooking {
 		case 2:
 			opt_2();
 			break;
+		case 3:
+			opt_3();
+			break;
 		}
 		return 0;
 	}
 
-	public static void opt_1() {
+	private static void opt_1() {
 		Scanner read = new Scanner(System.in);
 		System.out.print("\n-- Tell me the reservation ID of the table: ");
 		Table t = new Table();
@@ -68,18 +72,24 @@ public class IU_TableBooking {
 		Table t = new Table();
 		System.out.print("\n-- Tell me the turn (lunch(1) or dinner(2)): ");
 		turn = read.nextInt();
-		while (turn > 2 || turn < 1) {
+		while (turn > 3 || turn < 1) {
 			System.out.print("\n-- Please type a valid turn (lunch(1) or dinner(2)): ");
 			turn = read.nextByte();
 		}
-		System.out.print("\n-- Tell me your desired hour (from 12h to 15h for lunch and from 20h to 23h for dinner): ");
+		System.out.print(
+				"\n-- Tell me your desired hour (from 9h to 12h for breakfast, from 12h to 15h for lunch and from 20h to 23h for dinner): ");
 		hour = read.nextByte();
 		if (turn == 1) {
-			while (hour < 12 || hour > 15) {
+			while (hour < 9 || hour > 12) {
+				System.out.print("\n-- Tell me a valid hour (from 9h to 12h for breakfast, only o'clock hours): ");
+				hour = read.nextByte();
+			}
+		} else if (turn == 2) {
+			while (hour < 12 || hour > 16) {
 				System.out.print("\n-- Tell me a valid hour (from 12h to 15h for lunch, only o'clock hours): ");
 				hour = read.nextByte();
 			}
-		} else {
+		} else if (turn == 3) {
 			while (hour < 20 || hour > 23) {
 				System.out.print("\n-- Tell me a valid hour (from 20h to 23h for dinner, only o'clock hours): ");
 				hour = read.nextByte();
@@ -94,5 +104,13 @@ public class IU_TableBooking {
 			menu();
 		}
 
+	}
+
+	private static void opt_3() {
+		System.out.print("\n-- Showing the state of the tables... ");
+		LinkedList<Table> aux = TableManager.show_table_state();
+		for (int i = 0; i < aux.size(); i++) {
+			System.out.println(aux.get(i).toString());
+		}
 	}
 }

@@ -1,20 +1,25 @@
 package org.table.booking.domain;
 
+import java.util.LinkedList;
+
 public class TableManager {
 
 	public static Table make_reservation(int turn, int hour) {
-		Table[] freetables = show_table_state();
-		if (freetables == null) {
-			return null;
-		} else {
-			freetables[0].setState("reserved");
-			freetables[0].setReserved_hour(hour);
-			if (mark_table_state(freetables[0]) > -1) {
-				return freetables[0];
-			} else {
-				return null;
+		LinkedList<Table> freetables = new LinkedList<>();
+		LinkedList<Table> aux = show_table_state();
+		for (int i = 0; i < aux.size(); i++) {
+			if (aux.get(i).state().equals("free")) {
+				freetables.add(aux.get(i));
 			}
+		}
 
+		Table free = freetables.getFirst();
+		free.setState("reserved");
+		free.setReserved_hour(hour);
+		if (mark_table_state(free) > -1) {
+			return free;
+		} else {
+			return null;
 		}
 	}
 
@@ -47,8 +52,14 @@ public class TableManager {
 		return t._tableDAO.update(t);
 	}
 
-	public static Table[] show_table_state() {
-
-		return null;
+	public static LinkedList<Table> show_table_state() {
+		Table t = new Table();
+		LinkedList<Table> aux = new LinkedList<>();
+		if (t._tableDAO.read(t) > 0) {
+			for (int i = 0; i < t._tableDAO._tableList.size(); i++) {
+				aux.add(t._tableDAO._tableList.get(i));
+			}
+		}
+		return aux;
 	}
 }

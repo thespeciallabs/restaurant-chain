@@ -19,6 +19,16 @@ public class Table {
 		this._ID = i;
 	}
 
+	public Table(int _ID, int _turn, int _diners, String _state, Date _reserved_hour, String _reservationID) {
+		super();
+		this._ID = _ID;
+		this._turn = _turn;
+		this._diners = _diners;
+		this._state = _state;
+		this._reserved_hour = _reserved_hour;
+		this._reservationID = _reservationID;
+	}
+
 	public String reservationID() {
 		return _reservationID;
 	}
@@ -65,6 +75,13 @@ public class Table {
 
 	public void setDiners(int _diners) {
 		this._diners = _diners;
+	}
+
+	@Override
+	public String toString() {
+		return "Table [_ID=" + _ID + ", _turn=" + _turn + ", _diners=" + _diners + ", _state=" + _state
+				+ ", _reserved_hour=" + _reserved_hour + ", _reservationID=" + _reservationID + ", _tableDAO="
+				+ _tableDAO + "]";
 	}
 
 }
