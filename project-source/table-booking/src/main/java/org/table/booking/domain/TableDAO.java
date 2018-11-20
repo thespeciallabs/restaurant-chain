@@ -10,7 +10,12 @@ public class TableDAO {
 	public Table _table;
 
 	public int update(Table aT) {
-		throw new UnsupportedOperationException();
+		try {
+			return DBBroker.getAgente().update("UPDATE Tables SET State=" + aT.state() + ", Hour=" + aT.reserved_hour()
+					+ " WHERE ID=" + aT.ID() + ";");
+		} catch (Exception e) {
+			return -1;
+		}
 	}
 
 	public int delete(Table aT) {

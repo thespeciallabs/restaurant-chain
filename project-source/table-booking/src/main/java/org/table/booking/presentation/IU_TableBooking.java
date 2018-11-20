@@ -38,8 +38,11 @@ public class IU_TableBooking {
 		switch (opt) {
 		case 1:
 			opt_1();
+			break;
+		case 2:
+			opt_2();
+			break;
 		}
-
 		return 0;
 	}
 
@@ -56,5 +59,40 @@ public class IU_TableBooking {
 			System.out.println("-- Your table [" + t.ID() + "] is ready.");
 			menu();
 		}
+	}
+
+	private static void opt_2() {
+		Scanner read = new Scanner(System.in);
+		int turn;
+		int hour;
+		Table t = new Table();
+		System.out.print("\n-- Tell me the turn (lunch(1) or dinner(2)): ");
+		turn = read.nextInt();
+		while (turn > 2 || turn < 1) {
+			System.out.print("\n-- Please type a valid turn (lunch(1) or dinner(2)): ");
+			turn = read.nextByte();
+		}
+		System.out.print("\n-- Tell me your desired hour (from 12h to 15h for lunch and from 20h to 23h for dinner): ");
+		hour = read.nextByte();
+		if (turn == 1) {
+			while (hour < 12 || hour > 15) {
+				System.out.print("\n-- Tell me a valid hour (from 12h to 15h for lunch, only o'clock hours): ");
+				hour = read.nextByte();
+			}
+		} else {
+			while (hour < 20 || hour > 23) {
+				System.out.print("\n-- Tell me a valid hour (from 20h to 23h for dinner, only o'clock hours): ");
+				hour = read.nextByte();
+			}
+		}
+		t = TableManager.make_reservation(turn, hour);
+		if (t == null) {
+			System.out.println("\n-- There is no tables available for this turn.");
+			menu();
+		} else {
+			System.out.println("\n-- OK. You reserved a table for this turn.");
+			menu();
+		}
+
 	}
 }
