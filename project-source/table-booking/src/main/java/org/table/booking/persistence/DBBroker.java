@@ -1,8 +1,9 @@
-package org.table.booking.login;
-
+package org.table.booking.persistence;
 
 import java.sql.*;
 import java.util.LinkedList;
+
+import org.table.booking.domain.Login;
 
 public class DBBroker {
 	protected static DBBroker mInstancia = null;
@@ -56,21 +57,37 @@ public class DBBroker {
 		return res;
 	}
 
-	public LinkedList<String> read(String SQL) throws SQLException, Exception {
+	public LinkedList<Login> readLogin(String SQL) throws SQLException, Exception {
 		connect();
 		Statement select = mBD.createStatement();
 
-		LinkedList<String> s = new LinkedList<>();
+		LinkedList<Login> s = new LinkedList<>();
 		ResultSet resultado = select.executeQuery(SQL);
 		while (resultado.next()) {
 			String usr = resultado.getString("user");
 			String pass = resultado.getString("password");
+
+			Login l = new Login(usr, pass);
+			s.add(l);
 		}
 
 		select.close();
 		disconnect();
 
 		return s;
+	}
+
+	public ResultSet read(String SQL) throws SQLException, Exception {
+		connect();
+		Statement select = mBD.createStatement();
+
+		LinkedList<String> s = new LinkedList<>();
+		ResultSet resultado = select.executeQuery(SQL);
+
+		select.close();
+		disconnect();
+
+		return resultado;
 	}
 
 }

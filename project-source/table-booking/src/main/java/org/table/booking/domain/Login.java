@@ -1,4 +1,4 @@
-package org.table.booking.login;
+package org.table.booking.domain;
 
 public class Login {
 	private String _user;

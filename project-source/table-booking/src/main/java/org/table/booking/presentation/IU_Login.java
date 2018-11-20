@@ -1,10 +1,11 @@
-package org.table.booking.login;
+package org.table.booking.presentation;
 
 import java.util.Scanner;
 
+import org.table.booking.domain.Login;
+
 public class IU_Login {
 	public static void main(String[] args) {
-		System.out.println("-----\tRestaurant Chain Manager.\t(v0.0.1)\t-----");
 		while (start() == -1) {
 			start();
 		}

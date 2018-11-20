@@ -26,30 +26,17 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>table-booking</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>attached</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<descriptorRefs>
-								<descriptorRef>jar-with-dependencies</descriptorRef>
-							</descriptorRefs>
-							<archive>
-								<manifest>
-									<!-- Clase Main -->
-									<mainClass>org.table.booking.login.App.main</mainClass>
-								</manifest>
-							</archive>
-						</configuration>
-					</execution>
-				</executions>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.table.booking.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
