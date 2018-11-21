@@ -1,4 +1,4 @@
-package es.thespeciallabs.iso2.restaurant_chain;
+package org.table.booking;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

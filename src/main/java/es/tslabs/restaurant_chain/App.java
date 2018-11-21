@@ -1,4 +1,4 @@
-package es.thespeciallabs.iso2.restaurant_chain;
+package es.tslabs.restaurant_chain;
 
 /**
  * Hello world!

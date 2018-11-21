@@ -1,13 +1,12 @@
-package es.thespeciallabs.iso2.restaurant_chain.persistence;
+package org.table.booking.persistence;
 
 import java.sql.*;
-import java.util.LinkedList;
 
 public class DBBroker {
 	protected static DBBroker mInstancia = null;
 	protected static Connection mBD;
-	private static String url = "---";
-	private static String driver = "com.mysql.jdbc.Driver";
+	private static String url = "jdbc:mysql://192.168.1.39/restaurant-chain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	private static String driver = "com.mysql.cj.jdbc.Driver";
 
 	private DBBroker() throws Exception {
 		connect();
@@ -22,7 +21,7 @@ public class DBBroker {
 
 	private void connect() throws Exception {
 		Class.forName(driver);
-		mBD = DriverManager.getConnection(url);
+		mBD = DriverManager.getConnection(url, "root", "12345");
 	}
 
 	public void disconnect() throws Exception {
@@ -55,21 +54,11 @@ public class DBBroker {
 		return res;
 	}
 
-	public LinkedList<String> read(String SQL) throws SQLException, Exception {
+	public ResultSet read(String SQL) throws SQLException, Exception {
 		connect();
 		Statement select = mBD.createStatement();
-
-		LinkedList<String> s = new LinkedList<>();
 		ResultSet resultado = select.executeQuery(SQL);
-		while (resultado.next()) {
-			String usr = resultado.getString("user");
-			String pass = resultado.getString("password");
-		}
-
-		select.close();
-		disconnect();
-
-		return s;
+		return resultado;
 	}
 
 }

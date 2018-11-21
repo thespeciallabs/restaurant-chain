@@ -1,9 +1,19 @@
-package es.thespeciallabs.iso2.restaurant_chain.domain;
+package org.table.booking.domain;
 
 public class Login {
 	private String _user;
 	private String _pass;
-	public LoginDAO _loginDAO;
+	public LoginDAO _loginDAO = new LoginDAO();
+
+	public Login(String _user, String _pass) {
+		super();
+		this._user = _user;
+		this._pass = _pass;
+	}
+
+	public Login() {
+		super();
+	}
 
 	public String user() {
 		return _user;
@@ -33,7 +43,6 @@ public class Login {
 		if (this._loginDAO.read(this) == 0) {
 			return true;
 		}
-
 		return false;
 	}
 }
