@@ -8,7 +8,7 @@ import org.table.booking.domain.Login;
 public class DBBroker {
 	protected static DBBroker mInstancia = null;
 	protected static Connection mBD;
-	private static String url = "---";
+	private static String url = "jdbc:mysql://192.168.1.41/restaurant-chaindb?user=mandre\";";
 	private static String driver = "com.mysql.jdbc.Driver";
 
 	private DBBroker() throws Exception {
@@ -55,26 +55,6 @@ public class DBBroker {
 		stmt.close();
 		disconnect();
 		return res;
-	}
-
-	public LinkedList<Login> readLogin(String SQL) throws SQLException, Exception {
-		connect();
-		Statement select = mBD.createStatement();
-
-		LinkedList<Login> s = new LinkedList<>();
-		ResultSet resultado = select.executeQuery(SQL);
-		while (resultado.next()) {
-			String usr = resultado.getString("user");
-			String pass = resultado.getString("password");
-
-			Login l = new Login(usr, pass);
-			s.add(l);
-		}
-
-		select.close();
-		disconnect();
-
-		return s;
 	}
 
 	public ResultSet read(String SQL) throws SQLException, Exception {
