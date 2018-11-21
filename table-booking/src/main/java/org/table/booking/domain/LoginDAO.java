@@ -16,7 +16,7 @@ public class LoginDAO {
 	public int read(Login aI) {
 		try {
 			ResultSet resultado = DBBroker.getAgente()
-					.read("SELECT * WHERE user=" + aI.user() + " & password=" + aI.pass() + ";");
+					.read("SELECT * FROM login WHERE user1=' + aI.user() + ' and pass=' + aI.pass() + ';");
 			while (resultado.next()) {
 				aI.setUser(resultado.getString("User"));
 				aI.setPass(resultado.getString("Password"));

@@ -30,17 +30,21 @@ public class TableManager {
 	public static Table assing_table(String resID) {
 		Table t = new Table();
 		t.setReservationID(resID);
-		t._tableDAO.read(t);
-		if (t.reserved_hour().getTime() < System.currentTimeMillis()) {
-			t.setState("busy");
-			t.setReserved_hour((System.currentTimeMillis() / 1000 / 60));
-			mark_table_state(t);
-		} else if ((System.currentTimeMillis() - t.reserved_hour().getTime()) > (20 * 60 * 1000)) {
-			t.setState("free");
-			t.setReserved_hour(0);
-			mark_table_state(t);
+		if (t._tableDAO.read(t) == -1) {
 			return null;
+		} else {
+			if (t.reserved_hour().getTime() < System.currentTimeMillis()) {
+				t.setState("busy");
+				t.setReserved_hour((System.currentTimeMillis() / 1000 / 60));
+				mark_table_state(t);
+			} else if ((System.currentTimeMillis() - t.reserved_hour().getTime()) > (20 * 60 * 1000)) {
+				t.setState("free");
+				t.setReserved_hour(0);
+				mark_table_state(t);
+				return null;
+			}
 		}
+
 		return t;
 	}
 
@@ -55,11 +59,10 @@ public class TableManager {
 	public static LinkedList<Table> show_table_state() {
 		Table t = new Table();
 		LinkedList<Table> aux = new LinkedList<>();
-		if (t._tableDAO.read(t) > 0) {
-			for (int i = 0; i < t._tableDAO._tableList.size(); i++) {
-				aux.add(t._tableDAO._tableList.get(i));
-			}
+		if ((aux = t._tableDAO.read()) != null) {
+			return aux;
+		} else {
+			return null;
 		}
-		return aux;
 	}
 }

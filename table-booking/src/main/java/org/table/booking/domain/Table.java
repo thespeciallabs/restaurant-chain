@@ -9,7 +9,7 @@ public class Table {
 	private String _state;
 	private Date _reserved_hour;
 	private String _reservationID;
-	public TableDAO _tableDAO;
+	public TableDAO _tableDAO = new TableDAO();
 
 	public Table() {
 

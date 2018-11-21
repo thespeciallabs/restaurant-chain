@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import org.table.booking.domain.Table;
 import org.table.booking.domain.TableManager;
+import org.table.booking.exceptions.WrongMenuException;
 
 public class IU_TableBooking {
 	public static void main(String[] args) {
@@ -24,12 +25,12 @@ public class IU_TableBooking {
 			System.out.print("Your option: ");
 			opt = menu.nextByte();
 			if (opt > 5 || opt < 1) {
-				throw new Exception();
+				throw new WrongMenuException("Please, choose a valid option.");
 			} else {
 				start(opt);
 			}
 		} catch (Exception e) {
-			System.out.println("Please, choose a valid option");
+			e.printStackTrace();
 			menu();
 		}
 	}
@@ -45,6 +46,12 @@ public class IU_TableBooking {
 			break;
 		case 3:
 			opt_3();
+			break;
+		case 4:
+			opt_4();
+			break;
+		case 5:
+			opt_5();
 			break;
 		}
 		return 0;
@@ -107,10 +114,58 @@ public class IU_TableBooking {
 	}
 
 	private static void opt_3() {
+		Scanner read = new Scanner(System.in);
 		System.out.print("\n-- Showing the state of the tables... ");
 		LinkedList<Table> aux = TableManager.show_table_state();
-		for (int i = 0; i < aux.size(); i++) {
-			System.out.println(aux.get(i).toString());
+		if (aux != null) {
+			for (int i = 0; i < aux.size(); i++) {
+				System.out.println(aux.get(i).toString());
+			}
+			System.out.print("\n-- Select the ID of the table to change the state: ");
+
+			int id = read.nextInt();
+			Table t = new Table(id);
+			t._tableDAO.read(t);
+			System.out.print("\n-- Tell me the state to mark: ");
+			t.setState(read.next());
+			if (TableManager.mark_table_state(t) == -1) {
+				System.out.println("\n-- There was a problem changing the state.");
+			} else {
+				System.out.println("\n-- State changed!");
+			}
+
+		} else {
+			System.out.println("\n-- There is no tables in the list.");
+			menu();
 		}
 	}
+
+	private static void opt_4() {
+		System.out.print("\n-- Showing the state of the tables... ");
+		LinkedList<Table> aux = TableManager.show_table_state();
+		if (aux != null) {
+			for (int i = 0; i < aux.size(); i++) {
+				System.out.println(aux.get(i).toString());
+			}
+		} else {
+			System.out.println("\n-- There is no tables in the list.");
+			menu();
+		}
+
+	}
+
+	private static void opt_5() {
+		System.out.print("\n-- Showing the turns of the tables... ");
+		LinkedList<Table> aux = TableManager.show_table_state();
+		if (aux != null) {
+			for (int i = 0; i < aux.size(); i++) {
+				System.out.println(aux.get(i).toString());
+			}
+		} else {
+			System.out.println("\n-- There is no tables in the list.");
+			menu();
+		}
+
+	}
+
 }
