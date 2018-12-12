@@ -20,7 +20,7 @@ public class TableManagerTest {
 	public void make_reservationTest() {
 
 		Table expected = null;
-		t = TableManager.make_reservation(1, 9);
+		t = TableManager.make_reservation(1, "9", 4);
 		assertEquals(expected, t);
 	}
 

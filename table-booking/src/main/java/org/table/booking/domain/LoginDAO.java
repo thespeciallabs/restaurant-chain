@@ -14,18 +14,22 @@ public class LoginDAO {
 	}
 
 	public int read(Login aI) {
+		int count = 0;
 		try {
 			ResultSet resultado = DBBroker.getAgente()
-					.read("SELECT * FROM login WHERE user1=' + aI.user() + ' and pass=' + aI.pass() + ';");
+					.read("SELECT * FROM login WHERE user1='" + aI.user() + "' and pass='" + aI.pass() + "';");
 			while (resultado.next()) {
-				aI.setUser(resultado.getString("User"));
-				aI.setPass(resultado.getString("Password"));
+				count++;
 			}
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			return -1;
 		}
-		return 0;
+		if (count > 0) {
+			return 0;
+		} else {
+			return -1;
+		}
 	}
 }

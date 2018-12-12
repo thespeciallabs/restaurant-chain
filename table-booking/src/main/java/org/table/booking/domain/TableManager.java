@@ -1,45 +1,59 @@
 package org.table.booking.domain;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 public class TableManager {
 
-	public static Table make_reservation(int turn, int hour) {
-		LinkedList<Table> freetables = new LinkedList<>();
-		LinkedList<Table> aux = show_table_state();
-		for (int i = 0; i < aux.size(); i++) {
-			if (aux.get(i).state().equals("free")) {
-				freetables.add(aux.get(i));
-			}
-		}
+	public static Table make_reservation(int turn, String hour, int diners) {
+		Reservation r = new Reservation();
+		r.set_reservation_hour(hour);
+		r.set_diners(diners);
+		r.set_turn(turn);
+		LinkedList<Table> freetables = show_free_table_state(r);
 
 		Table free = freetables.getFirst();
 		free.setState("reserved");
-		free.setReserved_hour(hour);
-		if (mark_table_state(free) > -1) {
-			return free;
-		} else {
-			return null;
-		}
+
+		mark_table_state(free);
+		createReservation(r);
+		return free;
+	}
+
+	private static void createReservation(Reservation r) {
+		r._reservationDAO.insert(r);
 	}
 
 	public void cancel_reservation() {
 		throw new UnsupportedOperationException();
 	}
 
-	public static Table assing_table(String resID) {
+	public static Table assing_table(int resID) {
 		Table t = new Table();
-		t.setReservationID(resID);
-		if (t._tableDAO.read(t) == -1) {
+		Reservation r = new Reservation();
+		r.set_reservationID(resID);
+		if (r._reservationDAO.read(r) == -1) {
 			return null;
 		} else {
-			if (t.reserved_hour().getTime() < System.currentTimeMillis()) {
+			t.setID(r.get_tableID());
+			t._tableDAO.read(t);
+			Calendar calendar = new GregorianCalendar();
+
+			int s_hour = calendar.get(Calendar.HOUR_OF_DAY);
+			int s_min = calendar.get(Calendar.MINUTE);
+			String s_time = "" + s_hour + s_min;
+
+			String r_time = r.get_reservation_hour().substring(0, 1) + r.get_reservation_hour().substring(3, 4);
+
+			if (Integer.valueOf(r_time) <= Integer.valueOf(s_time)
+					|| Integer.valueOf(s_time) - Integer.valueOf(r_time) < 20) {
 				t.setState("busy");
-				t.setReserved_hour((System.currentTimeMillis() / 1000 / 60));
 				mark_table_state(t);
-			} else if ((System.currentTimeMillis() - t.reserved_hour().getTime()) > (20 * 60 * 1000)) {
+				r._reservationDAO.delete(r);
+			} else {
 				t.setState("free");
-				t.setReserved_hour(0);
+				r._reservationDAO.delete(r);
 				mark_table_state(t);
 				return null;
 			}
@@ -56,10 +70,31 @@ public class TableManager {
 		return t._tableDAO.update(t);
 	}
 
+	public static LinkedList<Reservation> show_reservations(Table t) {
+		Reservation r = new Reservation();
+		LinkedList<Reservation> aux = new LinkedList<>();
+		r._reservationDAO.readTable(t);
+		if ((aux = r._reservationDAO.get_reservationList()) != null) {
+			return aux;
+		} else {
+			return null;
+		}
+	}
+
 	public static LinkedList<Table> show_table_state() {
 		Table t = new Table();
 		LinkedList<Table> aux = new LinkedList<>();
 		if ((aux = t._tableDAO.read()) != null) {
+			return aux;
+		} else {
+			return null;
+		}
+	}
+
+	public static LinkedList<Table> show_free_table_state(Reservation r) {
+		Table t = new Table();
+		LinkedList<Table> aux = new LinkedList<>();
+		if ((aux = t._tableDAO.readFree(r)) != null) {
 			return aux;
 		} else {
 			return null;

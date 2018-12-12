@@ -1,87 +1,54 @@
 package org.table.booking.domain;
 
-import java.util.Date;
-
 public class Table {
-	private int _ID;
-	private int _turn;
-	private int _diners;
+	private String _ID;
+	private int _maxdiners;
 	private String _state;
-	private Date _reserved_hour;
-	private String _reservationID;
 	public TableDAO _tableDAO = new TableDAO();
 
 	public Table() {
 
 	}
 
-	public Table(int i) {
+	public Table(String i) {
 		this._ID = i;
 	}
 
-	public Table(int _ID, int _turn, int _diners, String _state, Date _reserved_hour, String _reservationID) {
+	public Table(String _ID, int maxdiners, String _state) {
 		super();
 		this._ID = _ID;
-		this._turn = _turn;
-		this._diners = _diners;
+		this._maxdiners = maxdiners;
 		this._state = _state;
-		this._reserved_hour = _reserved_hour;
-		this._reservationID = _reservationID;
 	}
 
-	public String reservationID() {
-		return _reservationID;
-	}
-
-	public void setReservationID(String reservationID) {
-		this._reservationID = reservationID;
-	}
-
-	public int ID() {
+	public String ID() {
 		return _ID;
 	}
 
-	public void setID(int iD) {
+	public void setID(String iD) {
 		_ID = iD;
-	}
-
-	public int turn() {
-		return this._turn;
-	}
-
-	public int diners() {
-		return this._diners;
 	}
 
 	public String state() {
 		return this._state;
 	}
 
-	public Date reserved_hour() {
-		return this._reserved_hour;
-	}
-
-	public void setTurn(int aTurn) {
-		this._turn = aTurn;
-	}
-
 	public void setState(String aState) {
 		this._state = aState;
 	}
 
-	public void setReserved_hour(Object aReserved_hour) {
-		throw new UnsupportedOperationException();
+	public int get_maxdiners() {
+		return _maxdiners;
 	}
 
-	public void setDiners(int _diners) {
-		this._diners = _diners;
+	public void set_maxdiners(int _maxdiners) {
+		this._maxdiners = _maxdiners;
 	}
 
 	@Override
 	public String toString() {
-		return "Table [_ID=" + _ID + ", _turn=" + _turn + ", _diners=" + _diners + ", _state=" + _state
-				+ ", _reserved_hour=" + _reserved_hour + ", _reservationID=" + _reservationID + ", _tableDAO="
-				+ _tableDAO + "]";
+		return "Table [_ID=" + _ID + ", _maxdiners=" + _maxdiners + ", _state=" + _state + ", _tableDAO=" + _tableDAO
+				+ "]";
 	}
 
 }

@@ -1,8 +1,10 @@
 package org.table.booking.presentation;
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import org.table.booking.domain.Reservation;
 import org.table.booking.domain.Table;
 import org.table.booking.domain.TableManager;
 import org.table.booking.exceptions.WrongMenuException;
@@ -61,7 +63,14 @@ public class IU_TableBooking {
 		Scanner read = new Scanner(System.in);
 		System.out.print("\n-- Tell me the reservation ID of the table: ");
 		Table t = new Table();
-		String resID = read.next();
+		int resID = 0;
+		try {
+			resID = read.nextInt();
+		} catch (InputMismatchException e) {
+			System.out.println("-- Please, insert a number.");
+			menu();
+		}
+
 		t = TableManager.assing_table(resID);
 		if (t == null) {
 			System.out.println("-- Your reservation was cancelled");
@@ -74,8 +83,8 @@ public class IU_TableBooking {
 
 	private static void opt_2() {
 		Scanner read = new Scanner(System.in);
-		int turn;
-		int hour;
+		int turn = 0, diners = 0;
+		String hour;
 		Table t = new Table();
 		System.out.print("\n-- Tell me the turn (lunch(1) or dinner(2)): ");
 		turn = read.nextInt();
@@ -85,24 +94,33 @@ public class IU_TableBooking {
 		}
 		System.out.print(
 				"\n-- Tell me your desired hour (from 9h to 12h for breakfast, from 12h to 15h for lunch and from 20h to 23h for dinner): ");
-		hour = read.nextByte();
+		hour = read.next();
 		if (turn == 1) {
-			while (hour < 9 || hour > 12) {
+			while (Integer.valueOf(hour) < 9 || Integer.valueOf(hour) > 12) {
 				System.out.print("\n-- Tell me a valid hour (from 9h to 12h for breakfast, only o'clock hours): ");
-				hour = read.nextByte();
+				hour = read.next();
 			}
 		} else if (turn == 2) {
-			while (hour < 12 || hour > 16) {
+			while (Integer.valueOf(hour) < 12 || Integer.valueOf(hour) > 16) {
 				System.out.print("\n-- Tell me a valid hour (from 12h to 15h for lunch, only o'clock hours): ");
-				hour = read.nextByte();
+				hour = read.next();
 			}
 		} else if (turn == 3) {
-			while (hour < 20 || hour > 23) {
+			while (Integer.valueOf(hour) < 20 || Integer.valueOf(hour) > 23) {
 				System.out.print("\n-- Tell me a valid hour (from 20h to 23h for dinner, only o'clock hours): ");
-				hour = read.nextByte();
+				hour = read.next();
 			}
 		}
-		t = TableManager.make_reservation(turn, hour);
+
+		System.out.print("\n-- Tell me the number of diners: ");
+		try {
+			diners = read.nextInt();
+		} catch (InputMismatchException e) {
+			System.out.println("-- Please, insert a number.");
+			menu();
+		}
+
+		t = TableManager.make_reservation(turn, hour, diners);
 		if (t == null) {
 			System.out.println("\n-- There is no tables available for this turn.");
 			menu();
@@ -123,7 +141,7 @@ public class IU_TableBooking {
 			}
 			System.out.print("\n-- Select the ID of the table to change the state: ");
 
-			int id = read.nextInt();
+			String id = read.next();
 			Table t = new Table(id);
 			t._tableDAO.read(t);
 			System.out.print("\n-- Tell me the state to mark: ");
@@ -160,6 +178,11 @@ public class IU_TableBooking {
 		if (aux != null) {
 			for (int i = 0; i < aux.size(); i++) {
 				System.out.println(aux.get(i).toString());
+				for (Table j : aux) {
+					for (Reservation k : TableManager.show_reservations(j)) {
+						System.out.println(k.toString());
+					}
+				}
 			}
 		} else {
 			System.out.println("\n-- There is no tables in the list.");
