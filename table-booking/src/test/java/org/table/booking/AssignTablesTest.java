@@ -12,12 +12,12 @@ import org.table.booking.domain.Table;
 import org.table.booking.domain.TableManager;
 import org.table.booking.persistence.DBBroker;
 
-public class TableManagerTest {
+public class AssignTablesTest {
 
 	private Table t;
 
 	@Test // (timeout = 1000) @Skip
-	public void assignUnexistentTable() throws SQLException, Exception {
+	public void assignTableTC1() throws SQLException, Exception {
 		Table expected = new Table();
 		Reservation r_expected = new Reservation();
 		r_expected.set_reservationID(5);
