@@ -16,12 +16,12 @@ public class TableManagerTest {
 		Table t = new Table();
 	}
 
-	@Test(timeout = 1000)
+	@Test // (timeout = 1000)
 	public void make_reservationTest() {
-
-		Table expected = null;
-		t = TableManager.make_reservation(1, "9", 4);
-		assertEquals(expected, t);
+		Table expected = new Table();
+		expected.setState("reserved");
+		t = TableManager.make_reservation(1, "21:30", 2);
+		assertEquals(expected.state(), t.state());
 	}
 
 }

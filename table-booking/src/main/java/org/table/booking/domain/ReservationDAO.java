@@ -30,8 +30,9 @@ public class ReservationDAO {
 
 	public int insert(Reservation aR) {
 		try {
-			DBBroker.getAgente().create("INSERT INTO reservation(tableID,reservation_hour,diners,turn) VALUES('"
-					+ aR.get_tableID() + "', '" + aR.get_reservation_hour() + "', '" + aR.get_turn() + "';");
+			DBBroker.getAgente()
+					.create("INSERT INTO reservation(tableID,reservation_hour,diners,turn) VALUES(" + aR.get_tableID()
+							+ ", '" + aR.get_reservation_hour() + "'," + aR.get_diners() + "," + aR.get_turn() + ");");
 
 		} catch (Exception e) {
 			return -1;

@@ -5,7 +5,7 @@ import java.sql.*;
 public class DBBroker {
 	protected static DBBroker mInstancia = null;
 	protected static Connection mBD;
-	private static String url = "jdbc:mysql://192.168.1.41/restaurant-chain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	private static String url = "jdbc:mysql://172.19.218.98/restaurant-chain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 
 	private DBBroker() throws Exception {
