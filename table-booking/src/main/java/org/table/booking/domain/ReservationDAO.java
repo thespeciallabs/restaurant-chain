@@ -20,7 +20,7 @@ public class ReservationDAO {
 	public int delete(Reservation aR) {
 		try {
 			DBBroker.getAgente()
-					.delete("DELETE FROM reservation WHERE reservationID='" + aR.get_reservationID() + "';");
+					.delete("DELETE FROM reservation WHERE reservationID=" + aR.get_reservationID() + ";");
 
 		} catch (Exception e) {
 			return -1;
