@@ -14,7 +14,7 @@ public class TableManager {
 		r.set_turn(turn);
 		LinkedList<Table> freetables = show_free_table_state(r);
 
-		Table free = freetables.getFirst();
+		Table free = freetables.removeFirst();
 		free.setState("reserved");
 
 		mark_table_state(free);
@@ -43,15 +43,23 @@ public class TableManager {
 
 			int s_hour = calendar.get(Calendar.HOUR_OF_DAY);
 			int s_min = calendar.get(Calendar.MINUTE);
-			String s_time = "" + s_hour + s_min;
+			String s_time = "";
+			if (s_min < 10) {
+				s_time = "" + s_hour + "0" + s_min;
+			} else {
+				s_time = "" + s_hour + s_min;
+			}
+			if (s_hour < 10) {
+				s_time = "0" + s_time;
+			}
 			String r_time = "";
 
 			try {
-				r_time = r.get_reservation_hour().substring(0, 1) + r.get_reservation_hour().substring(3, 4);
+				r_time = r.get_reservation_hour().substring(0, 2) + r.get_reservation_hour().substring(3, 5);
 			} catch (NullPointerException e) {
 				return null;
 			}
-			if (Integer.valueOf(r_time) <= Integer.valueOf(s_time)
+			if (Integer.valueOf(r_time) >= Integer.valueOf(s_time)
 					|| Integer.valueOf(s_time) - Integer.valueOf(r_time) < 20) {
 				t.setState("busy");
 				mark_table_state(t);

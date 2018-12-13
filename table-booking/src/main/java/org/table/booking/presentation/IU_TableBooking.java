@@ -84,7 +84,7 @@ public class IU_TableBooking {
 	private static void opt_2() {
 		Scanner read = new Scanner(System.in);
 		int turn = 0, diners = 0;
-		String hour, min = null;
+		String hour, min = "-1";
 		Table t = new Table();
 		System.out.print("\n-- Tell me the turn (lunch(1) or dinner(2)): ");
 		turn = read.nextInt();

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mslc</groupId>
 	<artifactId>JunitExample</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>JunitExample Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -136,4 +136,7 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<modules>
+		<module>table-booking</module>
+	</modules>
 </project>
