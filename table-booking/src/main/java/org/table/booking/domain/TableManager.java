@@ -3,6 +3,7 @@ package org.table.booking.domain;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class TableManager {
 
@@ -43,9 +44,13 @@ public class TableManager {
 			int s_hour = calendar.get(Calendar.HOUR_OF_DAY);
 			int s_min = calendar.get(Calendar.MINUTE);
 			String s_time = "" + s_hour + s_min;
+			String r_time = "";
 
-			String r_time = r.get_reservation_hour().substring(0, 1) + r.get_reservation_hour().substring(3, 4);
-
+			try {
+				r_time = r.get_reservation_hour().substring(0, 1) + r.get_reservation_hour().substring(3, 4);
+			} catch (NullPointerException e) {
+				return null;
+			}
 			if (Integer.valueOf(r_time) <= Integer.valueOf(s_time)
 					|| Integer.valueOf(s_time) - Integer.valueOf(r_time) < 20) {
 				t.setState("busy");

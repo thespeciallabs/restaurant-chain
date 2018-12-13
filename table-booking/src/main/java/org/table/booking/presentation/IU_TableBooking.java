@@ -73,7 +73,7 @@ public class IU_TableBooking {
 
 		t = TableManager.assing_table(resID);
 		if (t == null) {
-			System.out.println("-- Your reservation was cancelled");
+			System.out.println("-- There was an error with your reservation or it was cancelled.");
 			menu();
 		} else {
 			System.out.println("-- Your table [" + t.ID() + "] is ready.");
@@ -84,7 +84,7 @@ public class IU_TableBooking {
 	private static void opt_2() {
 		Scanner read = new Scanner(System.in);
 		int turn = 0, diners = 0;
-		String hour;
+		String hour, min = null;
 		Table t = new Table();
 		System.out.print("\n-- Tell me the turn (lunch(1) or dinner(2)): ");
 		turn = read.nextInt();
@@ -99,16 +99,28 @@ public class IU_TableBooking {
 			while (Integer.valueOf(hour) < 9 || Integer.valueOf(hour) > 12) {
 				System.out.print("\n-- Tell me a valid hour (from 9h to 12h for breakfast, only o'clock hours): ");
 				hour = read.next();
+				while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+					System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
+					min = read.next();
+				}
 			}
 		} else if (turn == 2) {
 			while (Integer.valueOf(hour) < 12 || Integer.valueOf(hour) > 16) {
 				System.out.print("\n-- Tell me a valid hour (from 12h to 15h for lunch, only o'clock hours): ");
 				hour = read.next();
+				while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+					System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
+					min = read.next();
+				}
 			}
 		} else if (turn == 3) {
 			while (Integer.valueOf(hour) < 20 || Integer.valueOf(hour) > 23) {
 				System.out.print("\n-- Tell me a valid hour (from 20h to 23h for dinner, only o'clock hours): ");
 				hour = read.next();
+				while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+					System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
+					min = read.next();
+				}
 			}
 		}
 
@@ -120,7 +132,7 @@ public class IU_TableBooking {
 			menu();
 		}
 
-		t = TableManager.make_reservation(turn, hour, diners);
+		t = TableManager.make_reservation(turn, hour + ":" + min, diners);
 		if (t == null) {
 			System.out.println("\n-- There is no tables available for this turn.");
 			menu();

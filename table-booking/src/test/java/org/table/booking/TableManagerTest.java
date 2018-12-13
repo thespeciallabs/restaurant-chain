@@ -2,26 +2,30 @@ package org.table.booking;
 
 import static org.junit.Assert.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.table.booking.domain.Reservation;
 import org.table.booking.domain.Table;
 import org.table.booking.domain.TableManager;
+import org.table.booking.persistence.DBBroker;
 
 public class TableManagerTest {
 
 	private Table t;
 
-	@Before
-	public void before() {
-		Table t = new Table();
-	}
-
-	@Test // (timeout = 1000)
-	public void make_reservationTest() {
+	@Test // (timeout = 1000) @Skip
+	public void assignUnexistentTable() throws SQLException, Exception {
 		Table expected = new Table();
-		expected.setState("reserved");
-		t = TableManager.make_reservation(1, "21:30", 2);
+		Reservation r_expected = new Reservation();
+		r_expected.set_reservationID(5);
+		expected.setState("busy");
+		t = TableManager.assing_table(r_expected.get_reservationID());
 		assertEquals(expected.state(), t.state());
+		ResultSet rs = DBBroker.getAgente()
+				.read("SELECT * FROM reservation WHERE reservationID=" + r_expected.get_reservationID() + ";");
+		assertEquals(rs.getRow(), 0);
 	}
-
 }
