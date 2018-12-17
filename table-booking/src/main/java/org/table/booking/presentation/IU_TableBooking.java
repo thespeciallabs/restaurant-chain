@@ -191,7 +191,7 @@ public class IU_TableBooking {
 			for (int i = 0; i < aux.size(); i++) {
 				System.out.println(aux.get(i).toString());
 				for (Table j : aux) {
-					for (Reservation k : TableManager.show_reservations(j)) {
+					for (Reservation k : TableManager.show_reservations(j.ID())) {
 						System.out.println(k.toString());
 					}
 				}

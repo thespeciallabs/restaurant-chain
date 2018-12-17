@@ -19,8 +19,7 @@ public class ReservationDAO {
 
 	public int delete(Reservation aR) {
 		try {
-			DBBroker.getAgente()
-					.delete("DELETE FROM reservation WHERE reservationID=" + aR.get_reservationID() + ";");
+			DBBroker.getAgente().delete("DELETE FROM reservation WHERE reservationID=" + aR.get_reservationID() + ";");
 
 		} catch (Exception e) {
 			return -1;
@@ -57,10 +56,10 @@ public class ReservationDAO {
 		return 0;
 	}
 
-	public int readTable(Table t) {
+	public int readTable(String tableID) {
 		try {
 			ResultSet resultado = DBBroker.getAgente()
-					.read("SELECT * FROM reservation WHERE tableID='" + t.ID() + "';");
+					.read("SELECT * FROM reservation WHERE tableID='" + tableID + "';");
 			while (resultado.next()) {
 				Reservation r = new Reservation(resultado.getInt("reservationID"), resultado.getString("tableID"),
 						resultado.getString("reservation_hour"), resultado.getInt("diners"), resultado.getInt("turn"));

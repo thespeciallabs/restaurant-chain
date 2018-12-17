@@ -6,7 +6,7 @@ public class DBBroker {
 	protected static DBBroker mInstancia = null;
 	protected static Connection mBD;
 	private static String url = "jdbc:mysql://192.168.1.34/restaurant-chain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static String driver = "com.mysql.cj.jdbc.Driver";
+	private static String driver = "com.mysql.jdbc.Driver";
 
 	private DBBroker() throws Exception {
 		connect();

@@ -87,10 +87,10 @@ public class TableManager {
 		return t._tableDAO.update(t);
 	}
 
-	public static LinkedList<Reservation> show_reservations(Table t) {
+	public static LinkedList<Reservation> show_reservations(String tableID) {
 		Reservation r = new Reservation();
 		LinkedList<Reservation> aux = new LinkedList<>();
-		r._reservationDAO.readTable(t);
+		r._reservationDAO.readTable(tableID);
 		if ((aux = r._reservationDAO.get_reservationList()) != null) {
 			return aux;
 		} else {
