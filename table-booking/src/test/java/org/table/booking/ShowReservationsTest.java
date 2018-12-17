@@ -25,14 +25,23 @@ public class ShowReservationsTest {
 
 	@Test // (timeout = 1000) @Skip
 	public void showTableStateTC1() {
+		tableID = "-5";
 		list = TableManager.show_reservations(tableID);
 		assertNull(list);
 	}
 
 	@Test // (timeout = 1000) @Skip
 	public void showTableStateTC2() {
+		tableID = "2";
 		list = TableManager.show_reservations(tableID);
 		assertNotNull(list);
+	}
+
+	@Test // (timeout = 1000) @Skip
+	public void showTableStateTC3() {
+		tableID = "0";
+		list = TableManager.show_reservations(tableID);
+		assertNull(list);
 	}
 
 }
