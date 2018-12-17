@@ -13,8 +13,12 @@ public class TableManager {
 		r.set_diners(diners);
 		r.set_turn(turn);
 		LinkedList<Table> freetables = show_free_table_state(r);
-
-		Table free = freetables.removeFirst();
+		Table free = new Table();
+		try {
+			free = freetables.removeFirst();
+		} catch (NoSuchElementException e) {
+			return null;
+		}
 		free.setState("reserved");
 
 		mark_table_state(free);
