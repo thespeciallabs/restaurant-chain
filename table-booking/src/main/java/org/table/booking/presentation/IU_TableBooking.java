@@ -86,10 +86,10 @@ public class IU_TableBooking {
 		int turn = 0, diners = 0;
 		String hour, min = "-1";
 		Table t = new Table();
-		System.out.print("\n-- Tell me the turn (lunch(1) or dinner(2)): ");
+		System.out.print("\n-- Tell me the turn ((1), (2) or (3)): ");
 		turn = read.nextInt();
 		while (turn > 3 || turn < 1) {
-			System.out.print("\n-- Please type a valid turn (lunch(1) or dinner(2)): ");
+			System.out.print("\n-- Please type a valid turn ((1), (2) or (3)): ");
 			turn = read.nextByte();
 		}
 		System.out.print(
@@ -99,28 +99,30 @@ public class IU_TableBooking {
 			while (Integer.valueOf(hour) < 9 || Integer.valueOf(hour) > 12) {
 				System.out.print("\n-- Tell me a valid hour (from 9h to 12h for breakfast, only o'clock hours): ");
 				hour = read.next();
-				while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
-					System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
-					min = read.next();
-				}
+
+			}
+			while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+				System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
+				min = read.next();
 			}
 		} else if (turn == 2) {
 			while (Integer.valueOf(hour) < 12 || Integer.valueOf(hour) > 16) {
 				System.out.print("\n-- Tell me a valid hour (from 12h to 15h for lunch, only o'clock hours): ");
 				hour = read.next();
-				while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
-					System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
-					min = read.next();
-				}
+
+			}
+			while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+				System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
+				min = read.next();
 			}
 		} else if (turn == 3) {
 			while (Integer.valueOf(hour) < 20 || Integer.valueOf(hour) > 23) {
 				System.out.print("\n-- Tell me a valid hour (from 20h to 23h for dinner, only o'clock hours): ");
 				hour = read.next();
-				while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
-					System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
-					min = read.next();
-				}
+			}
+			while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+				System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
+				min = read.next();
 			}
 		}
 

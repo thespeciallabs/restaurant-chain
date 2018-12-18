@@ -22,6 +22,7 @@ public class TableManager {
 		free.setState("reserved");
 
 		mark_table_state(free);
+		r.set_tableID(free.ID());
 		createReservation(r);
 		return free;
 	}

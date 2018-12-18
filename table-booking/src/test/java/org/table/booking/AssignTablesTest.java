@@ -97,7 +97,7 @@ public class AssignTablesTest {
 
 		assertNull(r); // r.reservationDAO.read(r) == null
 		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID() == -4
-		assertEquals("9:00", r_expected.get_reservation_hour()); // r.get_reservation_hour()
+		assertEquals("09:00", r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
 
 	@Test // (timeout = 1000) @Skip

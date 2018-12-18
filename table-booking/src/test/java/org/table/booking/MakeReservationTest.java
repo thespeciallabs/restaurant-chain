@@ -91,7 +91,7 @@ public class MakeReservationTest {
 	public void makeReservationTC7() {
 		Table expected = new Table();
 		expected.setState("reserved");
-		t = TableManager.make_reservation(-5, "9:00", 2);
+		t = TableManager.make_reservation(-5, "09:00", 2);
 
 		assertNull(t);
 		if (t != null) {
