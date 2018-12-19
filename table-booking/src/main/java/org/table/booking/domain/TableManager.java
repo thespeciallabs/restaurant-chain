@@ -13,7 +13,7 @@ public class TableManager {
 		r.set_diners(diners);
 		r.set_turn(turn);
 		LinkedList<Table> freetables = show_free_table_state(r);
-		Table free = new Table();
+		Table free;
 		try {
 			free = freetables.removeFirst();
 		} catch (NoSuchElementException e) {
@@ -64,8 +64,8 @@ public class TableManager {
 			} catch (NullPointerException e) {
 				return null;
 			}
-			if (Integer.valueOf(r_time) >= Integer.valueOf(s_time)
-					|| Integer.valueOf(s_time) - Integer.valueOf(r_time) < 20) {
+			if (Integer.parseInt(r_time) >= Integer.parseInt(s_time)
+					|| Integer.parseInt(s_time) - Integer.parseInt(r_time) < 20) {
 				t.setState("busy");
 				mark_table_state(t);
 				r._reservationDAO.delete(r);
@@ -90,7 +90,7 @@ public class TableManager {
 
 	public static LinkedList<Reservation> show_reservations(String tableID) {
 		Reservation r = new Reservation();
-		LinkedList<Reservation> aux = new LinkedList<>();
+		LinkedList<Reservation> aux;
 		r._reservationDAO.readTable(tableID);
 		if ((aux = r._reservationDAO.get_reservationList()) != null) {
 			return aux;
@@ -101,7 +101,7 @@ public class TableManager {
 
 	public static LinkedList<Table> show_table_state() {
 		Table t = new Table();
-		LinkedList<Table> aux = new LinkedList<>();
+		LinkedList<Table> aux;
 		if ((aux = t._tableDAO.read()) != null) {
 			return aux;
 		} else {
@@ -111,7 +111,7 @@ public class TableManager {
 
 	public static LinkedList<Table> show_free_table_state(Reservation r) {
 		Table t = new Table();
-		LinkedList<Table> aux = new LinkedList<>();
+		LinkedList<Table> aux;
 		if ((aux = t._tableDAO.readFree(r)) != null) {
 			return aux;
 		} else {

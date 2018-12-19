@@ -18,8 +18,9 @@ public class ReservationDAO {
 	}
 
 	public int delete(Reservation aR) {
+		final String sql = String.format("DELETE FROM reservation WHERE reservationID= %d;", aR.get_reservationID());
 		try {
-			DBBroker.getAgente().delete("DELETE FROM reservation WHERE reservationID=" + aR.get_reservationID() + ";");
+			DBBroker.getAgente().delete(sql);
 
 		} catch (Exception e) {
 			return -1;
@@ -28,10 +29,11 @@ public class ReservationDAO {
 	}
 
 	public int insert(Reservation aR) {
+		final String sql = String.format(
+				"INSERT INTO reservation(tableID,reservation_hour,diners,turn) VALUES('%s','%s',%d,%d);",
+				aR.get_tableID(), aR.get_reservation_hour(), aR.get_diners(), aR.get_turn());
 		try {
-			DBBroker.getAgente()
-					.create("INSERT INTO reservation(tableID,reservation_hour,diners,turn) VALUES(" + aR.get_tableID()
-							+ ", '" + aR.get_reservation_hour() + "'," + aR.get_diners() + "," + aR.get_turn() + ");");
+			DBBroker.getAgente().create(sql);
 
 		} catch (Exception e) {
 			return -1;
@@ -40,9 +42,9 @@ public class ReservationDAO {
 	}
 
 	public int read(Reservation aR) {
+		final String sql = String.format("SELECT * FROM reservation WHERE reservationID='%s';",aR.get_reservationID());
 		try {
-			ResultSet resultado = DBBroker.getAgente()
-					.read("SELECT * FROM reservation WHERE reservationID='" + aR.get_reservationID() + "';");
+			ResultSet resultado = DBBroker.getAgente().read(sql);
 			while (resultado.next()) {
 				aR.set_tableID(resultado.getString("tableID"));
 				aR.set_reservation_hour(resultado.getString("reservation_hour"));
@@ -57,9 +59,9 @@ public class ReservationDAO {
 	}
 
 	public int readTable(String tableID) {
+		final String sql = String.format("SELECT * FROM reservation WHERE tableID='%s';",tableID);
 		try {
-			ResultSet resultado = DBBroker.getAgente()
-					.read("SELECT * FROM reservation WHERE tableID='" + tableID + "';");
+			ResultSet resultado = DBBroker.getAgente().read(sql);
 			while (resultado.next()) {
 				Reservation r = new Reservation(resultado.getInt("reservationID"), resultado.getString("tableID"),
 						resultado.getString("reservation_hour"), resultado.getInt("diners"), resultado.getInt("turn"));
@@ -73,8 +75,9 @@ public class ReservationDAO {
 
 	public LinkedList<Reservation> read() {
 		LinkedList<Reservation> aux = new LinkedList<>();
+		final String sql = String.format("SELECT * FROM reservation ;");
 		try {
-			ResultSet resultado = DBBroker.getAgente().read("SELECT * FROM reservation" + " ;");
+			ResultSet resultado = DBBroker.getAgente().read(sql);
 			while (resultado.next()) {
 				Reservation r = new Reservation(resultado.getInt("reservationID"), resultado.getString("tableID"),
 						resultado.getString("reservation_hour"), resultado.getInt("diners"), resultado.getInt("turn"));

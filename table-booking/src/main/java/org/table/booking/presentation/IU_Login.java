@@ -9,13 +9,12 @@ public class IU_Login {
 		while (start() == -1) {
 			start();
 		}
-		return;
 	}
 
 	public static int start() {
-		Scanner read = new Scanner(System.in);
+		Scanner read = new Scanner(System.in,"UTF-8");
 		String name, pass;
-		Login login = new Login();
+		Login login;
 
 		System.out.println("\n-- LOGIN --");
 		System.out.print("-- Write your Name/ID: ");

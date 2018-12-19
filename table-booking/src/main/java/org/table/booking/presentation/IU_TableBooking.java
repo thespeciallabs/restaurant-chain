@@ -17,7 +17,7 @@ public class IU_TableBooking {
 	}
 
 	public static int menu() {
-		Scanner menu = new Scanner(System.in);
+		Scanner menu = new Scanner(System.in,"UTF-8");
 		byte opt = 0;
 		System.out.println("-- CHOOSE AN OPTION --\n");
 		System.out.println("-- 1. Assign a table --");
@@ -60,14 +60,16 @@ public class IU_TableBooking {
 		case 5:
 			opt_5();
 			break;
+		default:
+			break;
 		}
 		return 0;
 	}
 
 	private static void opt_1() {
-		Scanner read = new Scanner(System.in);
+		Scanner read = new Scanner(System.in,"UTF-8");
 		System.out.print("\n-- Tell me the reservation ID of the table: ");
-		Table t = new Table();
+		Table t;
 		int resID = 0;
 		try {
 			resID = read.nextInt();
@@ -87,10 +89,10 @@ public class IU_TableBooking {
 	}
 
 	static int opt_2() {
-		Scanner read = new Scanner(System.in);
+		Scanner read = new Scanner(System.in,"UTF-8");
 		int turn = 0, diners = 0;
 		String hour, min = "-1";
-		Table t = new Table();
+		Table t;
 		System.out.print("\n-- Tell me the turn ((1), (2) or (3)): ");
 		turn = read.nextInt();
 		while (turn > 3 || turn < 1) {
@@ -101,30 +103,30 @@ public class IU_TableBooking {
 				"\n-- Tell me your desired hour (from 9h to 12h for breakfast, from 12h to 15h for lunch and from 20h to 23h for dinner): ");
 		hour = read.next();
 		if (turn == 1) {
-			while (Integer.valueOf(hour) < 9 || Integer.valueOf(hour) > 12) {
+			while (Integer.parseInt(hour) < 9 || Integer.parseInt(hour) > 12) {
 				System.out.print("\n-- Tell me a valid hour (from 9h to 12h for breakfast, only o'clock hours): ");
 				hour = read.next();
 			}
-			while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+			while (Integer.parseInt(min) < 0 || Integer.parseInt(min) > 59) {
 				System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
 				min = read.next();
 			}
 		} else if (turn == 2) {
-			while (Integer.valueOf(hour) < 12 || Integer.valueOf(hour) > 16) {
+			while (Integer.parseInt(hour) < 12 || Integer.parseInt(hour) > 16) {
 				System.out.print("\n-- Tell me a valid hour (from 12h to 15h for lunch, only o'clock hours): ");
 				hour = read.next();
 
 			}
-			while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+			while (Integer.parseInt(min) < 0 || Integer.parseInt(min) > 59) {
 				System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
 				min = read.next();
 			}
 		} else if (turn == 3) {
-			while (Integer.valueOf(hour) < 20 || Integer.valueOf(hour) > 23) {
+			while (Integer.parseInt(hour) < 20 || Integer.parseInt(hour) > 23) {
 				System.out.print("\n-- Tell me a valid hour (from 20h to 23h for dinner, only o'clock hours): ");
 				hour = read.next();
 			}
-			while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
+			while (Integer.parseInt(min) < 0 || Integer.parseInt(min) > 59) {
 				System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
 				min = read.next();
 			}
@@ -150,7 +152,7 @@ public class IU_TableBooking {
 	}
 
 	private static void opt_3() {
-		Scanner read = new Scanner(System.in);
+		Scanner read = new Scanner(System.in,"UTF-8");
 		System.out.print("\n-- Showing the state of the tables... ");
 		LinkedList<Table> aux = TableManager.show_table_state();
 		if (aux != null) {
