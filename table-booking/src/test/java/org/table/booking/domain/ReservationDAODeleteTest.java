@@ -1,4 +1,4 @@
-package org.table.booking;
+package org.table.booking.domain;
 
 import static org.junit.Assert.*;
 

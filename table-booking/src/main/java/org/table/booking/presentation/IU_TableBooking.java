@@ -11,10 +11,12 @@ import org.table.booking.exceptions.WrongMenuException;
 
 public class IU_TableBooking {
 	public static void main(String[] args) {
-		menu();
+		while (menu() == -1) {
+			menu();
+		}
 	}
 
-	public static void menu() {
+	public static int menu() {
 		Scanner menu = new Scanner(System.in);
 		byte opt = 0;
 		System.out.println("-- CHOOSE AN OPTION --\n");
@@ -33,8 +35,9 @@ public class IU_TableBooking {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			menu();
+			return -1;
 		}
+		return 0;
 	}
 
 	public static int start(byte opt) {
@@ -44,7 +47,9 @@ public class IU_TableBooking {
 			opt_1();
 			break;
 		case 2:
-			opt_2();
+			while (opt_2() == -1) {
+				menu();
+			}
 			break;
 		case 3:
 			opt_3();
@@ -81,7 +86,7 @@ public class IU_TableBooking {
 		}
 	}
 
-	private static void opt_2() {
+	static int opt_2() {
 		Scanner read = new Scanner(System.in);
 		int turn = 0, diners = 0;
 		String hour, min = "-1";
@@ -99,7 +104,6 @@ public class IU_TableBooking {
 			while (Integer.valueOf(hour) < 9 || Integer.valueOf(hour) > 12) {
 				System.out.print("\n-- Tell me a valid hour (from 9h to 12h for breakfast, only o'clock hours): ");
 				hour = read.next();
-
 			}
 			while (Integer.valueOf(min) < 0 || Integer.valueOf(min) > 59) {
 				System.out.print("\n-- Tell me a valid minute (from 0 to 59): ");
@@ -131,16 +135,16 @@ public class IU_TableBooking {
 			diners = read.nextInt();
 		} catch (InputMismatchException e) {
 			System.out.println("-- Please, insert a number.");
-			menu();
+			return -1;
 		}
 
 		t = TableManager.make_reservation(turn, hour + ":" + min, diners);
 		if (t == null) {
 			System.out.println("\n-- There is no tables available for this turn.");
-			menu();
+			return -1;
 		} else {
 			System.out.println("\n-- OK. You reserved a table for this turn.");
-			menu();
+			return 0;
 		}
 
 	}

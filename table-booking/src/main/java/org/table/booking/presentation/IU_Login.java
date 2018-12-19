@@ -9,6 +9,7 @@ public class IU_Login {
 		while (start() == -1) {
 			start();
 		}
+		return;
 	}
 
 	public static int start() {
