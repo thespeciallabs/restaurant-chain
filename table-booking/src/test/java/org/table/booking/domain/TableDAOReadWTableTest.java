@@ -28,10 +28,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC1() {
 		table.setID("-10");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -44,10 +46,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC2() {
 		table.setID("10");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -60,10 +64,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC3() {
 		table.setID("0");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -76,10 +82,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC4() {
 		table.setID("1000000");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -92,10 +100,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC5() {
 		table.setID("-10");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -108,10 +118,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC6() {
 		table.setID("10");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -124,10 +136,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC7() {
 		table.setID("0");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -140,10 +154,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC8() {
 		table.setID("1000000");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -156,10 +172,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC9() {
 		table.setID("-10");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
@@ -172,10 +190,12 @@ public class TableDAOReadWTableTest {
 	@Test // (timeout = 1000) @Skip
 	public void readWTableTC10() {
 		table.setID("10");
-		table._tableDAO.read(table);
+		table.get_tableDAO().read(table);
 
 		try {
-			resultado = DBBroker.getAgente().read("SELECT * FROM restaurantTables WHERE tableID='" + table.ID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM restaurantTables WHERE tableID='"
+							+ table.ID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}

@@ -19,21 +19,21 @@ public class LoginDAOreadTest {
 	public void readTC1() {
 		l.setUser(null);
 		l.setPass(null);
-		assertEquals(-1, l._loginDAO.read(l));
+		assertEquals(-1, l.get_loginDAO().read(l));
 	}
 
 	@Test // (timeout = 1000) @Skip
 	public void readTC2() {
 		l.setUser("mandre");
 		l.setPass("123");
-		assertEquals(0, l._loginDAO.read(l));
+		assertEquals(0, l.get_loginDAO().read(l));
 	}
 
 	@Test // (timeout = 1000) @Skip
 	public void readTC3() {
 		l.setUser(null);
 		l.setPass(null);
-		assertEquals(0, l._loginDAO.read(l));
+		assertEquals(0, l.get_loginDAO().read(l));
 	}
 
 }

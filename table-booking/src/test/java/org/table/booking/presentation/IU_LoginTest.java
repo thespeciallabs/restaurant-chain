@@ -12,7 +12,8 @@ public class IU_LoginTest {
 	@Test
 	public void startTestTC1() {
 		String input = "mandre 123";
-		InputStream is = new ByteArrayInputStream(input.getBytes());
+		InputStream is = new ByteArrayInputStream(
+				input.getBytes());
 		System.setIn(is);
 		assertEquals(0, IU_Login.start());
 	}
@@ -20,7 +21,8 @@ public class IU_LoginTest {
 	@Test
 	public void startTestTC2() {
 		String input = "user 5423";
-		InputStream is = new ByteArrayInputStream(input.getBytes());
+		InputStream is = new ByteArrayInputStream(
+				input.getBytes());
 		System.setIn(is);
 		assertEquals(-1, IU_Login.start());
 	}

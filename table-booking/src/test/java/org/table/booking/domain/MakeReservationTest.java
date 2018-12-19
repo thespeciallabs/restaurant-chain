@@ -81,7 +81,8 @@ public class MakeReservationTest {
 	public void makeReservationTC6() {
 		Table expected = new Table();
 		expected.setState("reserved");
-		t = TableManager.make_reservation(2000, "25:30", 2000);
+		t = TableManager.make_reservation(2000, "25:30",
+				2000);
 
 		assertNotNull(t);
 		assertEquals(expected.state(), t.state());
@@ -149,7 +150,8 @@ public class MakeReservationTest {
 	public void makeReservationTC12() {
 		Table expected = new Table();
 		expected.setState("reserved");
-		t = TableManager.make_reservation(2000, "700:30", 2000);
+		t = TableManager.make_reservation(2000, "700:30",
+				2000);
 
 		assertNotNull(t);
 		assertEquals(expected.state(), t.state());

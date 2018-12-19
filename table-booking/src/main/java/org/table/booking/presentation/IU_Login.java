@@ -12,7 +12,7 @@ public class IU_Login {
 	}
 
 	public static int start() {
-		Scanner read = new Scanner(System.in,"UTF-8");
+		Scanner read = new Scanner(System.in, "UTF-8");
 		String name, pass;
 		Login login;
 
@@ -21,13 +21,16 @@ public class IU_Login {
 		name = read.next();
 		System.out.print("-- Now your pass: ");
 		pass = read.next();
-		System.out.println("\n-- \tChecking credentials...\t --");
+		System.out.println(
+				"\n-- \tChecking credentials...\t --");
 		login = new Login(name, pass);
 		if (login.check_credentials()) {
-			System.out.println("\n-- Welcome " + login.user() + "! --");
+			System.out.println("\n-- Welcome "
+					+ login.user() + "! --");
 			return 0;
 		} else {
-			System.out.println("\n-- ERROR: Incorrect credentials, try again. --");
+			System.out.println(
+					"\n-- ERROR: Incorrect credentials, try again. --");
 			return -1;
 		}
 	}

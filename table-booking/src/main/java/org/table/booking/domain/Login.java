@@ -3,12 +3,20 @@ package org.table.booking.domain;
 public class Login {
 	private String _user;
 	private String _pass;
-	public LoginDAO _loginDAO = new LoginDAO();
+	private LoginDAO _loginDAO = new LoginDAO();
 
 	public Login(String _user, String _pass) {
 		super();
 		this._user = _user;
 		this._pass = _pass;
+	}
+
+	public LoginDAO get_loginDAO() {
+		return _loginDAO;
+	}
+
+	public void set_loginDAO(LoginDAO _loginDAO) {
+		this._loginDAO = _loginDAO;
 	}
 
 	public Login() {

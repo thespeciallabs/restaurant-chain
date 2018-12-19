@@ -4,7 +4,7 @@ public class Table {
 	private String _ID;
 	private int _maxdiners;
 	private String _state;
-	public TableDAO _tableDAO = new TableDAO();
+	private TableDAO _tableDAO = new TableDAO();
 
 	public Table() {
 
@@ -19,6 +19,14 @@ public class Table {
 		this._ID = _ID;
 		this._maxdiners = maxdiners;
 		this._state = _state;
+	}
+
+	public TableDAO get_tableDAO() {
+		return _tableDAO;
+	}
+
+	public void set_tableDAO(TableDAO _tableDAO) {
+		this._tableDAO = _tableDAO;
 	}
 
 	public String ID() {
@@ -47,8 +55,9 @@ public class Table {
 
 	@Override
 	public String toString() {
-		return "Table [_ID=" + _ID + ", _maxdiners=" + _maxdiners + ", _state=" + _state + ", _tableDAO=" + _tableDAO
-				+ "]";
+		return "Table [_ID=" + _ID + ", _maxdiners="
+				+ _maxdiners + ", _state=" + _state
+				+ ", _tableDAO=" + _tableDAO + "]";
 	}
 
 }

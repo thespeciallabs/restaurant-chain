@@ -7,9 +7,11 @@ public class Reservation {
 	private int _diners;
 	private String _reservation_hour;
 
-	public ReservationDAO _reservationDAO = new ReservationDAO();
+	private ReservationDAO _reservationDAO = new ReservationDAO();
 
-	public Reservation(int _reservationID, String _tableID, String _reservation_hour, int _diners, int _turn) {
+	public Reservation(int _reservationID, String _tableID,
+			String _reservation_hour, int _diners,
+			int _turn) {
 		super();
 		this._reservationID = _reservationID;
 		this._tableID = _tableID;
@@ -20,6 +22,15 @@ public class Reservation {
 
 	public Reservation() {
 
+	}
+
+	public ReservationDAO get_reservationDAO() {
+		return _reservationDAO;
+	}
+
+	public void set_reservationDAO(
+			ReservationDAO _reservationDAO) {
+		this._reservationDAO = _reservationDAO;
 	}
 
 	public int get_reservationID() {
@@ -58,7 +69,8 @@ public class Reservation {
 		return _reservation_hour;
 	}
 
-	public void set_reservation_hour(String _reservation_hour) {
+	public void set_reservation_hour(
+			String _reservation_hour) {
 		this._reservation_hour = _reservation_hour;
 	}
 

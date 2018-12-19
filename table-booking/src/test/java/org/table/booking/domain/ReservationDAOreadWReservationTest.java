@@ -27,18 +27,20 @@ public class ReservationDAOreadWReservationTest {
 	public void readWTableTC1() throws SQLException {
 		r.set_reservationID(-5);
 
-		res = r._reservationDAO.read(r);
+		res = r.get_reservationDAO().read(r);
 
 		try {
-			resultado = DBBroker.getAgente()
-					.read("SELECT * FROM reservation WHERE reservationID='" + r.get_reservationID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM reservation WHERE reservationID='"
+							+ r.get_reservationID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
 
 		try {
 			resultado.next();
-			r.set_reservationID(resultado.getInt("reservationID"));
+			r.set_reservationID(
+					resultado.getInt("reservationID"));
 		} catch (SQLException e) {
 			fail("Test failed.");
 		}
@@ -50,18 +52,20 @@ public class ReservationDAOreadWReservationTest {
 	public void readWTableTC2() throws SQLException {
 		r.set_reservationID(7);
 
-		res = r._reservationDAO.read(r);
+		res = r.get_reservationDAO().read(r);
 
 		try {
-			resultado = DBBroker.getAgente()
-					.read("SELECT * FROM reservation WHERE reservationID='" + r.get_reservationID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM reservation WHERE reservationID='"
+							+ r.get_reservationID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
 
 		try {
 			resultado.next();
-			r.set_reservationID(resultado.getInt("reservationID"));
+			r.set_reservationID(
+					resultado.getInt("reservationID"));
 		} catch (SQLException e) {
 			fail("Test failed.");
 		}
@@ -73,18 +77,20 @@ public class ReservationDAOreadWReservationTest {
 	public void readWTableTC3() throws SQLException {
 		r.set_reservationID(0);
 
-		res = r._reservationDAO.read(r);
+		res = r.get_reservationDAO().read(r);
 
 		try {
-			resultado = DBBroker.getAgente()
-					.read("SELECT * FROM reservation WHERE reservationID='" + r.get_reservationID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM reservation WHERE reservationID='"
+							+ r.get_reservationID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
 
 		try {
 			resultado.next();
-			r.set_reservationID(resultado.getInt("reservationID"));
+			r.set_reservationID(
+					resultado.getInt("reservationID"));
 		} catch (SQLException e) {
 			fail("Test failed.");
 		}
@@ -96,18 +102,20 @@ public class ReservationDAOreadWReservationTest {
 	public void readWTableTC4() throws SQLException {
 		r.set_reservationID(1000000);
 
-		res = r._reservationDAO.read(r);
+		res = r.get_reservationDAO().read(r);
 
 		try {
-			resultado = DBBroker.getAgente()
-					.read("SELECT * FROM reservation WHERE reservationID='" + r.get_reservationID() + "';");
+			resultado = DBBroker.getAgente().read(
+					"SELECT * FROM reservation WHERE reservationID='"
+							+ r.get_reservationID() + "';");
 		} catch (Exception e) {
 			fail("Test failed.");
 		}
 
 		try {
 			resultado.next();
-			r.set_reservationID(resultado.getInt("reservationID"));
+			r.set_reservationID(
+					resultado.getInt("reservationID"));
 		} catch (SQLException e) {
 			fail("Test failed.");
 		}

@@ -2,18 +2,32 @@ package org.table.booking.persistence;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 
-public class DBBroker {
-	static DBBroker mInstancia = null;
-	static Connection mBD;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
+
+public final class DBBroker {
+	private static DBBroker mInstancia = null;
+	private static Connection mBD;
 	private String user, pass, url, driver;
 
-	Properties prop = new Properties();
+	private Properties prop = new Properties();
 
 	private DBBroker() throws Exception {
 		connect();
+	}
+
+	public static DBBroker getmInstancia() {
+		return mInstancia;
+	}
+
+	public static void setmInstancia(DBBroker mInstancia) {
+		DBBroker.mInstancia = mInstancia;
 	}
 
 	public static DBBroker getAgente() throws Exception {
@@ -23,10 +37,26 @@ public class DBBroker {
 		return mInstancia;
 	}
 
+	public static Connection getmBD() {
+		return mBD;
+	}
+
+	public static void setmBD(Connection mBD) {
+		DBBroker.mBD = mBD;
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+
 	private void connect() throws Exception {
 		File f = new File("credentials.properties");
 		FileInputStream fis = new FileInputStream(f);
-		;
+
 		try {
 			prop.load(fis);
 			user = prop.getProperty("username");
@@ -35,7 +65,8 @@ public class DBBroker {
 			driver = prop.getProperty("driver");
 
 			Class.forName(driver);
-			mBD = DriverManager.getConnection(url, user, pass);
+			mBD = (Connection) DriverManager.getConnection(url, user,
+					pass);
 		} finally {
 			fis.close();
 		}
@@ -46,9 +77,10 @@ public class DBBroker {
 		mBD.close();
 	}
 
-	public int create(String SQL) throws SQLException, Exception {
+	public int create(String SQL)
+			throws SQLException, Exception {
 		connect();
-		PreparedStatement stmt = mBD.prepareStatement(SQL);
+		PreparedStatement stmt = (PreparedStatement) mBD.prepareStatement(SQL);
 		int res = 0;
 		try {
 			res = stmt.executeUpdate();
@@ -59,9 +91,10 @@ public class DBBroker {
 		return res;
 	}
 
-	public int delete(String SQL) throws SQLException, Exception {
+	public int delete(String SQL)
+			throws SQLException, Exception {
 		connect();
-		PreparedStatement stmt = mBD.prepareStatement(SQL);
+		PreparedStatement stmt = (PreparedStatement) mBD.prepareStatement(SQL);
 		int res = 0;
 		try {
 			res = stmt.executeUpdate();
@@ -72,9 +105,10 @@ public class DBBroker {
 		return res;
 	}
 
-	public int update(String SQL) throws SQLException, Exception {
+	public int update(String SQL)
+			throws SQLException, Exception {
 		connect();
-		PreparedStatement stmt = mBD.prepareStatement(SQL);
+		PreparedStatement stmt = (PreparedStatement) mBD.prepareStatement(SQL);
 		int res = 0;
 		try {
 			res = stmt.executeUpdate();
@@ -85,9 +119,10 @@ public class DBBroker {
 		return res;
 	}
 
-	public ResultSet read(String SQL) throws SQLException, Exception {
+	public ResultSet read(String SQL)
+			throws SQLException, Exception {
 		connect();
-		Statement select = mBD.createStatement();
+		Statement select = (Statement) mBD.createStatement();
 		ResultSet resultado = null;
 		try {
 			resultado = select.executeQuery(SQL);
