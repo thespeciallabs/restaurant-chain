@@ -1,7 +1,6 @@
 package org.table.booking.domain;
 
 import java.sql.ResultSet;
-import java.sql.Time;
 import java.util.LinkedList;
 
 import org.table.booking.persistence.DBBroker;
@@ -11,9 +10,10 @@ public class TableDAO {
 	public Table _table;
 
 	public int update(Table aT) {
+		final String sql = String.format("UPDATE restaurantTables SET state='%s' WHERE tableID='%s';",aT.state(),aT.ID());
 		try {
-			return DBBroker.getAgente().update("UPDATE tables SET state='" + aT.state() + "', reserved_hour='"
-					+ "'00:00:00'" + "' WHERE tableID='" + aT.ID() + "';");
+			return DBBroker.getAgente()
+					.update(sql);
 		} catch (Exception e) {
 			return -1;
 		}
@@ -28,33 +28,14 @@ public class TableDAO {
 	}
 
 	public int read(Table aT) {
+		final String sql = String.format("SELECT * FROM restaurantTables WHERE tableID='%s';",aT.ID());
 		try {
 			ResultSet resultado = DBBroker.getAgente()
-					.read("SELECT * FROM tables WHERE reservationID='" + aT.reservationID() + "';");
+					.read(sql);
 			while (resultado.next()) {
-				aT.setID(resultado.getInt(1));
-				aT.setTurn(resultado.getInt(2));
-				aT.setDiners(resultado.getInt(3));
+				aT.set_maxdiners(resultado.getInt("sites"));
 				aT.setState(resultado.getString("state"));
-				aT.setReserved_hour(resultado.getString("reserved_hour"));
-				aT.setReservationID(resultado.getString("reservationID"));
 				this._tableList.add(aT);
-			}
-		} catch (Exception e) {
-			return -1;
-		}
-		return 0;
-	}
-
-	public int readOne(Table aT) {
-		try {
-			ResultSet resultado = DBBroker.getAgente().read("SELECT * FROM tables WHERE tableID='" + aT.ID() + "';");
-			while (resultado.next()) {
-				aT.setTurn(resultado.getInt(2));
-				aT.setDiners(resultado.getInt(3));
-				aT.setState(resultado.getString("state"));
-				aT.setReserved_hour(resultado.getString("reserved_hour"));
-				aT.setReservationID(resultado.getString("reservationID"));
 			}
 		} catch (Exception e) {
 			return -1;
@@ -64,12 +45,29 @@ public class TableDAO {
 
 	public LinkedList<Table> read() {
 		LinkedList<Table> aux = new LinkedList<>();
+		final String sql = String.format("SELECT * FROM restaurantTables ;");
 		try {
-			ResultSet resultado = DBBroker.getAgente().read("SELECT * FROM tables" + " ;");
+			ResultSet resultado = DBBroker.getAgente().read(sql);
 			while (resultado.next()) {
-				Table t = new Table(resultado.getInt(1), resultado.getInt(2), resultado.getInt(3),
-						resultado.getString("state"), resultado.getDate("reserved_hour"),
-						resultado.getString("reservationID"));
+				Table t = new Table(resultado.getString("tableID"), resultado.getInt("sites"),
+						resultado.getString("state"));
+				aux.add(t);
+			}
+		} catch (Exception e) {
+			return null;
+		}
+		return aux;
+	}
+
+	public LinkedList<Table> readFree(Reservation r) {
+		LinkedList<Table> aux = new LinkedList<>();
+		final String sql = String.format("SELECT * FROM restaurantTables WHERE state= 'free' AND sites>= %d ;",r.get_diners());
+		try {
+			ResultSet resultado = DBBroker.getAgente()
+					.read(sql);
+			while (resultado.next()) {
+				Table t = new Table(resultado.getString("tableID"), resultado.getInt("sites"),
+						resultado.getString("state"));
 				aux.add(t);
 			}
 		} catch (Exception e) {

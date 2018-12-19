@@ -1,12 +1,16 @@
 package org.table.booking.persistence;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class DBBroker {
-	protected static DBBroker mInstancia = null;
-	protected static Connection mBD;
-	private static String url = "jdbc:mysql://192.168.1.39/restaurant-chain?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private static String driver = "com.mysql.cj.jdbc.Driver";
+	static DBBroker mInstancia = null;
+	static Connection mBD;
+	private String user, pass, url, driver;
+
+	Properties prop = new Properties();
 
 	private DBBroker() throws Exception {
 		connect();
@@ -20,8 +24,22 @@ public class DBBroker {
 	}
 
 	private void connect() throws Exception {
-		Class.forName(driver);
-		mBD = DriverManager.getConnection(url, "root", "12345");
+		File f = new File("credentials.properties");
+		FileInputStream fis = new FileInputStream(f);
+		;
+		try {
+			prop.load(fis);
+			user = prop.getProperty("username");
+			pass = prop.getProperty("password");
+			url = prop.getProperty("url");
+			driver = prop.getProperty("driver");
+
+			Class.forName(driver);
+			mBD = DriverManager.getConnection(url, user, pass);
+		} finally {
+			fis.close();
+		}
+
 	}
 
 	public void disconnect() throws Exception {
@@ -31,33 +49,51 @@ public class DBBroker {
 	public int create(String SQL) throws SQLException, Exception {
 		connect();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
-		int res = stmt.executeUpdate();
-		stmt.close();
-		disconnect();
+		int res = 0;
+		try {
+			res = stmt.executeUpdate();
+		} finally {
+			stmt.close();
+			disconnect();
+		}
 		return res;
 	}
 
 	public int delete(String SQL) throws SQLException, Exception {
+		connect();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
-		int res = stmt.executeUpdate();
-		stmt.close();
-		disconnect();
+		int res = 0;
+		try {
+			res = stmt.executeUpdate();
+		} finally {
+			stmt.close();
+			disconnect();
+		}
 		return res;
 	}
 
 	public int update(String SQL) throws SQLException, Exception {
 		connect();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
-		int res = stmt.executeUpdate();
-		stmt.close();
-		disconnect();
+		int res = 0;
+		try {
+			res = stmt.executeUpdate();
+		} finally {
+			stmt.close();
+			disconnect();
+		}
 		return res;
 	}
 
 	public ResultSet read(String SQL) throws SQLException, Exception {
 		connect();
 		Statement select = mBD.createStatement();
-		ResultSet resultado = select.executeQuery(SQL);
+		ResultSet resultado = null;
+		try {
+			resultado = select.executeQuery(SQL);
+		} catch (Exception e) {
+			select.close();
+		}
 		return resultado;
 	}
 

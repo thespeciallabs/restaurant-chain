@@ -7,25 +7,28 @@ import org.table.booking.persistence.DBBroker;
 
 public class LoginDAO {
 	public Login _login;
-	private LinkedList<Login> loginList;
-
 	public LoginDAO() {
 
 	}
 
 	public int read(Login aI) {
+		int count = 0;
+		final String sql = String.format("SELECT * FROM login WHERE user1='%s' and pass='%s';",aI.user(),aI.pass());
 		try {
 			ResultSet resultado = DBBroker.getAgente()
-					.read("SELECT * FROM login WHERE user1=' + aI.user() + ' and pass=' + aI.pass() + ';");
+					.read(sql);
 			while (resultado.next()) {
-				aI.setUser(resultado.getString("User"));
-				aI.setPass(resultado.getString("Password"));
+				count++;
 			}
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			return -1;
 		}
-		return 0;
+		if (count > 0) {
+			return 0;
+		} else {
+			return -1;
+		}
 	}
 }
