@@ -10,15 +10,15 @@ public class LoginDAO {
 
 	}
 
-	public Login get_login() {
+	public final Login get_login() {
 		return _login;
 	}
 
-	public void set_login(Login _login) {
+	public final void set_login(final Login _login) {
 		this._login = _login;
 	}
 
-	public int read(Login aI) {
+	public final int read(final Login aI) {
 		int count = 0;
 		final String sql = String.format(
 				"SELECT * FROM login WHERE user1='%s' and pass='%s';",

@@ -9,24 +9,25 @@ public class ReservationDAO {
 	private LinkedList<Reservation> _reservationList = new LinkedList<Reservation>();
 	private Reservation _reservation;
 
-	public Reservation get_reservation() {
+	public final Reservation get_reservation() {
 		return _reservation;
 	}
 
-	public void set_reservation(Reservation _reservation) {
+	public final void set_reservation(
+			final Reservation _reservation) {
 		this._reservation = _reservation;
 	}
 
-	public LinkedList<Reservation> get_reservationList() {
+	public final LinkedList<Reservation> get_reservationList() {
 		return _reservationList;
 	}
 
-	public void set_reservationList(
-			LinkedList<Reservation> _reservationList) {
+	public final void set_reservationList(
+			final LinkedList<Reservation> _reservationList) {
 		this._reservationList = _reservationList;
 	}
 
-	public int delete(Reservation aR) {
+	public final int delete(final Reservation aR) {
 		final String sql = String.format(
 				"DELETE FROM reservation WHERE reservationID= %d;",
 				aR.get_reservationID());
@@ -39,7 +40,7 @@ public class ReservationDAO {
 		return 0;
 	}
 
-	public int insert(Reservation aR) {
+	public final int insert(final Reservation aR) {
 		final String sql = String.format(
 				"INSERT INTO reservation(tableID,reservation_hour,diners,turn) VALUES('%s','%s',%d,%d);",
 				aR.get_tableID(), aR.get_reservation_hour(),
@@ -53,7 +54,7 @@ public class ReservationDAO {
 		return 0;
 	}
 
-	public int read(Reservation aR) {
+	public final int read(final Reservation aR) {
 		final String sql = String.format(
 				"SELECT * FROM reservation WHERE reservationID='%s';",
 				aR.get_reservationID());
@@ -75,7 +76,7 @@ public class ReservationDAO {
 		return 0;
 	}
 
-	public int readTable(String tableID) {
+	public final int readTable(final String tableID) {
 		final String sql = String.format(
 				"SELECT * FROM reservation WHERE tableID='%s';",
 				tableID);
@@ -98,7 +99,7 @@ public class ReservationDAO {
 		return 0;
 	}
 
-	public LinkedList<Reservation> read() {
+	public final LinkedList<Reservation> read() {
 		LinkedList<Reservation> aux = new LinkedList<>();
 		final String sql = String
 				.format("SELECT * FROM reservation ;");

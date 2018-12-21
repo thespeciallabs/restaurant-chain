@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.table.booking.domain.Login;
 
 public class IU_Login {
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		while (start() == -1) {
 			start();
 		}

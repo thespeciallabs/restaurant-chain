@@ -10,51 +10,53 @@ public class Table {
 
 	}
 
-	public Table(String i) {
+	public Table(final String i) {
 		this._ID = i;
 	}
 
-	public Table(String _ID, int maxdiners, String _state) {
+	public Table(final String _ID, final int maxdiners,
+			final String _state) {
 		super();
 		this._ID = _ID;
 		this._maxdiners = maxdiners;
 		this._state = _state;
 	}
 
-	public TableDAO get_tableDAO() {
+	public final TableDAO get_tableDAO() {
 		return _tableDAO;
 	}
 
-	public void set_tableDAO(TableDAO _tableDAO) {
+	public final void set_tableDAO(
+			final TableDAO _tableDAO) {
 		this._tableDAO = _tableDAO;
 	}
 
-	public String ID() {
+	public final String ID() {
 		return _ID;
 	}
 
-	public void setID(String iD) {
+	public final void setID(final String iD) {
 		_ID = iD;
 	}
 
-	public String state() {
+	public final String state() {
 		return this._state;
 	}
 
-	public void setState(String aState) {
+	public final void setState(final String aState) {
 		this._state = aState;
 	}
 
-	public int get_maxdiners() {
+	public final int get_maxdiners() {
 		return _maxdiners;
 	}
 
-	public void set_maxdiners(int _maxdiners) {
+	public final void set_maxdiners(final int _maxdiners) {
 		this._maxdiners = _maxdiners;
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "Table [_ID=" + _ID + ", _maxdiners="
 				+ _maxdiners + ", _state=" + _state
 				+ ", _tableDAO=" + _tableDAO + "]";

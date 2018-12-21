@@ -4,7 +4,7 @@ import org.table.booking.presentation.IU_Login;
 import org.table.booking.presentation.IU_TableBooking;
 
 class App {
-	public static void main(String[]args){
+	public static void main(final String[]args) {
 		System.out.println(
 				"-----\tRestaurant Chain Manager.\t(v1.0)\t-----\n");
 		System.out.println("-----\tTABLE BOOKING\t-----");

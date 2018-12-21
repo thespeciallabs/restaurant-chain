@@ -26,11 +26,13 @@ public final class DBBroker {
 		return mInstancia;
 	}
 
-	public static void setmInstancia(DBBroker mInstancia) {
+	public static void setmInstancia(
+			final DBBroker mInstancia) {
 		DBBroker.mInstancia = mInstancia;
 	}
 
-	public static DBBroker getAgente() throws Exception {
+	public static DBBroker getAgente()
+			throws Exception {
 		if (mInstancia == null) {
 			mInstancia = new DBBroker();
 		}
@@ -41,7 +43,7 @@ public final class DBBroker {
 		return mBD;
 	}
 
-	public static void setmBD(Connection mBD) {
+	public static void setmBD(final Connection mBD) {
 		DBBroker.mBD = mBD;
 	}
 
@@ -49,7 +51,7 @@ public final class DBBroker {
 		return prop;
 	}
 
-	public void setProp(Properties prop) {
+	public void setProp(final Properties prop) {
 		this.prop = prop;
 	}
 
@@ -65,8 +67,8 @@ public final class DBBroker {
 			driver = prop.getProperty("driver");
 
 			Class.forName(driver);
-			mBD = (Connection) DriverManager.getConnection(url, user,
-					pass);
+			mBD = (Connection) DriverManager
+					.getConnection(url, user, pass);
 		} finally {
 			fis.close();
 		}
@@ -77,10 +79,11 @@ public final class DBBroker {
 		mBD.close();
 	}
 
-	public int create(String SQL)
+	public int create(final String SQL)
 			throws SQLException, Exception {
 		connect();
-		PreparedStatement stmt = (PreparedStatement) mBD.prepareStatement(SQL);
+		PreparedStatement stmt = (PreparedStatement) mBD
+				.prepareStatement(SQL);
 		int res = 0;
 		try {
 			res = stmt.executeUpdate();
@@ -91,10 +94,11 @@ public final class DBBroker {
 		return res;
 	}
 
-	public int delete(String SQL)
+	public int delete(final String SQL)
 			throws SQLException, Exception {
 		connect();
-		PreparedStatement stmt = (PreparedStatement) mBD.prepareStatement(SQL);
+		PreparedStatement stmt = (PreparedStatement) mBD
+				.prepareStatement(SQL);
 		int res = 0;
 		try {
 			res = stmt.executeUpdate();
@@ -105,10 +109,11 @@ public final class DBBroker {
 		return res;
 	}
 
-	public int update(String SQL)
+	public int update(final String SQL)
 			throws SQLException, Exception {
 		connect();
-		PreparedStatement stmt = (PreparedStatement) mBD.prepareStatement(SQL);
+		PreparedStatement stmt = (PreparedStatement) mBD
+				.prepareStatement(SQL);
 		int res = 0;
 		try {
 			res = stmt.executeUpdate();
@@ -119,10 +124,11 @@ public final class DBBroker {
 		return res;
 	}
 
-	public ResultSet read(String SQL)
+	public ResultSet read(final String SQL)
 			throws SQLException, Exception {
 		connect();
-		Statement select = (Statement) mBD.createStatement();
+		Statement select = (Statement) mBD
+				.createStatement();
 		ResultSet resultado = null;
 		try {
 			resultado = select.executeQuery(SQL);

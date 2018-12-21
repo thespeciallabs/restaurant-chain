@@ -10,7 +10,27 @@ import org.table.booking.domain.TableManager;
 import org.table.booking.exceptions.WrongMenuException;
 
 public class IU_TableBooking {
-	public static void main(String[] args) {
+	private static final int MIN_MENU = 1;
+	private static final int MAX_MENU = 5;
+	private static final int FIRST_OPT = 1;
+	private static final int SECOND_OPT = 2;
+	private static final int THIRD_OPT = 3;
+	private static final int FOURTH_OPT = 4;
+	private static final int FIVETH_OPT = 5;
+	private static final int MIN_TURN = 1;
+	private static final int MAX_TURN = 3;
+	private static final int TURN1_MIN_HOUR = 9;
+	private static final int TURN1_MAX_HOUR = 12;
+	private static final int TURN2_MIN_HOUR = 12;
+	private static final int TURN2_MAX_HOUR = 16;
+	private static final int TURN3_MIN_HOUR = 20;
+	private static final int TURN3_MAX_HOUR = 23;
+	private static final int MIN_MINUTES = 0;
+	private static final int MAX_MINUTES = 59;
+	private static final int TURN_1 = 1;
+	private static final int TURN_2 = 2;
+	private static final int TURN_3 = 3;
+	public static void main(final String[] args) {
 		while (menu() == -1) {
 			menu();
 		}
@@ -29,7 +49,7 @@ public class IU_TableBooking {
 		try {
 			System.out.print("Your option: ");
 			opt = menu.nextByte();
-			if (opt > 5 || opt < 1) {
+			if (opt > MAX_MENU || opt < MIN_MENU) {
 				throw new WrongMenuException(
 						"Please, choose a valid option.");
 			} else {
@@ -42,24 +62,24 @@ public class IU_TableBooking {
 		return 0;
 	}
 
-	public static int start(byte opt) {
+	public static int start(final byte opt) {
 
 		switch (opt) {
-		case 1:
+		case FIRST_OPT:
 			opt_1();
 			break;
-		case 2:
+		case SECOND_OPT:
 			while (opt_2() == -1) {
 				menu();
 			}
 			break;
-		case 3:
+		case THIRD_OPT:
 			opt_3();
 			break;
-		case 4:
+		case FOURTH_OPT:
 			opt_4();
 			break;
-		case 5:
+		case FIVETH_OPT:
 			opt_5();
 			break;
 		default:
@@ -102,7 +122,7 @@ public class IU_TableBooking {
 		System.out.print(
 				"\n-- Tell me the turn ((1), (2) or (3)): ");
 		turn = read.nextInt();
-		while (turn > 3 || turn < 1) {
+		while (turn > MAX_TURN || turn < MIN_TURN) {
 			System.out.print(
 					"\n-- Please type a valid turn ((1), (2) or (3)): ");
 			turn = read.nextByte();
@@ -110,42 +130,42 @@ public class IU_TableBooking {
 		System.out.print(
 				"\n-- Tell me your desired hour (from 9h to 12h for breakfast, from 12h to 15h for lunch and from 20h to 23h for dinner): ");
 		hour = read.next();
-		if (turn == 1) {
-			while (Integer.parseInt(hour) < 9
-					|| Integer.parseInt(hour) > 12) {
+		if (turn == TURN_1) {
+			while (Integer.parseInt(hour) < TURN1_MIN_HOUR
+					|| Integer.parseInt(hour) > TURN1_MAX_HOUR) {
 				System.out.print(
 						"\n-- Tell me a valid hour (from 9h to 12h for breakfast, only o'clock hours): ");
 				hour = read.next();
 			}
-			while (Integer.parseInt(min) < 0
-					|| Integer.parseInt(min) > 59) {
+			while (Integer.parseInt(min) < MIN_MINUTES
+					|| Integer.parseInt(min) > MAX_MINUTES) {
 				System.out.print(
 						"\n-- Tell me a valid minute (from 0 to 59): ");
 				min = read.next();
 			}
-		} else if (turn == 2) {
-			while (Integer.parseInt(hour) < 12
-					|| Integer.parseInt(hour) > 16) {
+		} else if (turn == TURN_2) {
+			while (Integer.parseInt(hour) < TURN2_MIN_HOUR
+					|| Integer.parseInt(hour) > TURN2_MAX_HOUR) {
 				System.out.print(
 						"\n-- Tell me a valid hour (from 12h to 15h for lunch, only o'clock hours): ");
 				hour = read.next();
 
 			}
-			while (Integer.parseInt(min) < 0
-					|| Integer.parseInt(min) > 59) {
+			while (Integer.parseInt(min) < MIN_MINUTES
+					|| Integer.parseInt(min) > MAX_MINUTES) {
 				System.out.print(
 						"\n-- Tell me a valid minute (from 0 to 59): ");
 				min = read.next();
 			}
-		} else if (turn == 3) {
-			while (Integer.parseInt(hour) < 20
-					|| Integer.parseInt(hour) > 23) {
+		} else if (turn == TURN_3) {
+			while (Integer.parseInt(hour) < TURN3_MIN_HOUR
+					|| Integer.parseInt(hour) > TURN3_MAX_HOUR) {
 				System.out.print(
 						"\n-- Tell me a valid hour (from 20h to 23h for dinner, only o'clock hours): ");
 				hour = read.next();
 			}
-			while (Integer.parseInt(min) < 0
-					|| Integer.parseInt(min) > 59) {
+			while (Integer.parseInt(min) < MIN_MINUTES
+					|| Integer.parseInt(min) > MAX_MINUTES) {
 				System.out.print(
 						"\n-- Tell me a valid minute (from 0 to 59): ");
 				min = read.next();

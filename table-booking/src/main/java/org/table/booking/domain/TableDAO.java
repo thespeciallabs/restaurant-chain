@@ -9,24 +9,24 @@ public class TableDAO {
 	private LinkedList<Table> _tableList = new LinkedList<Table>();
 	private Table _table;
 
-	public LinkedList<Table> get_tableList() {
+	public final LinkedList<Table> get_tableList() {
 		return _tableList;
 	}
 
-	public void set_tableList(
-			LinkedList<Table> _tableList) {
+	public final void set_tableList(
+			final LinkedList<Table> _tableList) {
 		this._tableList = _tableList;
 	}
 
-	public Table get_table() {
+	public final Table get_table() {
 		return _table;
 	}
 
-	public void set_table(Table _table) {
+	public final void set_table(final Table _table) {
 		this._table = _table;
 	}
 
-	public int update(Table aT) {
+	public final int update(final Table aT) {
 		final String sql = String.format(
 				"UPDATE restaurantTables SET state='%s' WHERE tableID='%s';",
 				aT.state(), aT.ID());
@@ -37,15 +37,15 @@ public class TableDAO {
 		}
 	}
 
-	public int delete(Table aT) {
+	public final int delete(final Table aT) {
 		throw new UnsupportedOperationException();
 	}
 
-	public int insert(Table aT) {
+	public final int insert(final Table aT) {
 		throw new UnsupportedOperationException();
 	}
 
-	public int read(Table aT) {
+	public final int read(final Table aT) {
 		final String sql = String.format(
 				"SELECT * FROM restaurantTables WHERE tableID='%s';",
 				aT.ID());
@@ -63,7 +63,7 @@ public class TableDAO {
 		return 0;
 	}
 
-	public LinkedList<Table> read() {
+	public final LinkedList<Table> read() {
 		LinkedList<Table> aux = new LinkedList<>();
 		final String sql = String
 				.format("SELECT * FROM restaurantTables ;");
@@ -83,7 +83,8 @@ public class TableDAO {
 		return aux;
 	}
 
-	public LinkedList<Table> readFree(Reservation r) {
+	public final LinkedList<Table> readFree(
+			final Reservation r) {
 		LinkedList<Table> aux = new LinkedList<>();
 		final String sql = String.format(
 				"SELECT * FROM restaurantTables WHERE state= 'free' AND sites>= %d ;",

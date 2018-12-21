@@ -5,17 +5,18 @@ public class Login {
 	private String _pass;
 	private LoginDAO _loginDAO = new LoginDAO();
 
-	public Login(String _user, String _pass) {
+	public Login(final String _user, final String _pass) {
 		super();
 		this._user = _user;
 		this._pass = _pass;
 	}
 
-	public LoginDAO get_loginDAO() {
+	public final LoginDAO get_loginDAO() {
 		return _loginDAO;
 	}
 
-	public void set_loginDAO(LoginDAO _loginDAO) {
+	public final void set_loginDAO(
+			final LoginDAO _loginDAO) {
 		this._loginDAO = _loginDAO;
 	}
 
@@ -23,31 +24,32 @@ public class Login {
 		super();
 	}
 
-	public String user() {
+	public final String user() {
 		return _user;
 	}
 
-	public void setUser(String _user) {
+	public final void setUser(final String _user) {
 		this._user = _user;
 	}
 
-	public String pass() {
+	public final String pass() {
 		return _pass;
 	}
 
-	public void setPass(String _pass) {
+	public final void setPass(final String _pass) {
 		this._pass = _pass;
 	}
 
-	public LoginDAO loginDAO() {
+	public final LoginDAO loginDAO() {
 		return _loginDAO;
 	}
 
-	public void setLoginDAO(LoginDAO _loginDAO) {
+	public final void setLoginDAO(
+			final LoginDAO _loginDAO) {
 		this._loginDAO = _loginDAO;
 	}
 
-	public boolean check_credentials() {
+	public final boolean check_credentials() {
 		if (this._loginDAO.read(this) == 0) {
 			return true;
 		}
