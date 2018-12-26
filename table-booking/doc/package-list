@@ -1,0 +1,6 @@
+es.tslabs.restaurant_chain
+org.table.booking
+org.table.booking.domain
+org.table.booking.exceptions
+org.table.booking.persistence
+org.table.booking.presentation
