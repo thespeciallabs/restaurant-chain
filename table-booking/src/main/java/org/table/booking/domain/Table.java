@@ -1,20 +1,19 @@
 package org.table.booking.domain;
 
 /*********************************************************************
-*
-* Class Name: Table
-* Author/s name: 
-* 				 @author Sergio Herrera Piqueras
-* 				 @author Juan Mena Patón
-* 				 @author Pablo Rodríguez Solera 
-* 				 @author Daniel Martínez Santiago.
-* Release/Creation date: 25/12/2018
-* Class version: 
-* 				 @version 1.0
-* Class description: This class holds all the parameters of our "Table" object.
-*
-**********************************************************************
-*/
+ *
+ * Class Name: Table Author/s name:
+ * 
+ * @author Sergio Herrera Piqueras
+ * @author Juan Mena Patón
+ * @author Pablo Rodríguez Solera
+ * @author Daniel Martínez Santiago. Release/Creation date:
+ *         25/12/2018 Class version:
+ * @version 1.0 Class description: This class holds all the
+ *          parameters of our "Table" object.
+ *
+ **********************************************************************
+ */
 public class Table {
 	private String _ID;
 	private int _maxdiners;
@@ -22,7 +21,7 @@ public class Table {
 	private TableDAO _tableDAO = new TableDAO();
 
 	/**
-	 *  Empty constructor.
+	 * Empty constructor.
 	 */
 	public Table() {
 
@@ -36,9 +35,9 @@ public class Table {
 	}
 
 	/**
-	 * @param _ID - The ID of the table.
+	 * @param _ID       - The ID of the table.
 	 * @param maxdiners - The maximum number of diners.
-	 * @param _state - The current state of the table.
+	 * @param _state    - The current state of the table.
 	 */
 	public Table(final String _ID, final int maxdiners,
 			final String _state) {
@@ -105,7 +104,9 @@ public class Table {
 		this._maxdiners = _maxdiners;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

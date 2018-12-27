@@ -30,7 +30,8 @@ public class AssignTablesTest {
 				r_expected.get_reservationID());
 
 		assertNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("-2:00",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -43,8 +44,10 @@ public class AssignTablesTest {
 		t = TableManager.assing_table(
 				r_expected.get_reservationID());
 
-		assertNotNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(2, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertNotNull(r); // r.reservationDAO.read(r) ==
+							// null
+		assertEquals(2, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("11:00",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -58,7 +61,8 @@ public class AssignTablesTest {
 				r_expected.get_reservationID());
 
 		assertNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(0, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertEquals(0, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("13:30",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -71,8 +75,10 @@ public class AssignTablesTest {
 		t = TableManager.assing_table(
 				r_expected.get_reservationID());
 
-		assertNotNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertNotNull(r); // r.reservationDAO.read(r) ==
+							// null
+		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("16:45",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -86,7 +92,8 @@ public class AssignTablesTest {
 				r_expected.get_reservationID());
 
 		assertNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(2, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertEquals(2, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("22:15",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -99,8 +106,10 @@ public class AssignTablesTest {
 		t = TableManager.assing_table(
 				r_expected.get_reservationID());
 
-		assertNotNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(0, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertNotNull(r); // r.reservationDAO.read(r) ==
+							// null
+		assertEquals(0, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("25:30",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -114,7 +123,8 @@ public class AssignTablesTest {
 				r_expected.get_reservationID());
 
 		assertNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("09:00",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -127,8 +137,10 @@ public class AssignTablesTest {
 		t = TableManager.assing_table(
 				r_expected.get_reservationID());
 
-		assertNotNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(2, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertNotNull(r); // r.reservationDAO.read(r) ==
+							// null
+		assertEquals(2, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("12:30",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -142,7 +154,8 @@ public class AssignTablesTest {
 				r_expected.get_reservationID());
 
 		assertNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(0, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertEquals(0, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("15:00",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -155,8 +168,10 @@ public class AssignTablesTest {
 		t = TableManager.assing_table(
 				r_expected.get_reservationID());
 
-		assertNotNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertNotNull(r); // r.reservationDAO.read(r) ==
+							// null
+		assertEquals(-4, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("20:45",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -170,7 +185,8 @@ public class AssignTablesTest {
 				r_expected.get_reservationID());
 
 		assertNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(2, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertEquals(2, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("23:00",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}
@@ -183,8 +199,10 @@ public class AssignTablesTest {
 		t = TableManager.assing_table(
 				r_expected.get_reservationID());
 
-		assertNotNull(r); // r.reservationDAO.read(r) == null
-		assertEquals(0, r_expected.get_tableID()); // r.get_tableID() == -4
+		assertNotNull(r); // r.reservationDAO.read(r) ==
+							// null
+		assertEquals(0, r_expected.get_tableID()); // r.get_tableID()
+													// == -4
 		assertEquals("700:30",
 				r_expected.get_reservation_hour()); // r.get_reservation_hour()
 	}

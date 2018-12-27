@@ -1,20 +1,21 @@
 package org.table.booking.domain;
+
 /*********************************************************************
-*
-* Class Name: Login
-* Author/s name: 
-* 				 @author Sergio Herrera Piqueras
-* 				 @author Juan Mena Patón
-* 				 @author Pablo Rodríguez Solera 
-* 				 @author Daniel Martínez Santiago.
-* Release/Creation date: 25/12/2018
-* Class version: 
-* 				 @version 1.0
-* Class description: This class creates a login object, that will contain the parameters for the login process
-* 					 as final private variables.
-*
-**********************************************************************
-*/
+ *
+ * Class Name: Login Author/s name:
+ * 
+ * @author Sergio Herrera Piqueras
+ * @author Juan Mena Patón
+ * @author Pablo Rodríguez Solera
+ * @author Daniel Martínez Santiago. Release/Creation date:
+ *         25/12/2018 Class version:
+ * @version 1.0 Class description: This class creates a
+ *          login object, that will contain the parameters
+ *          for the login process as final private
+ *          variables.
+ *
+ **********************************************************************
+ */
 public class Login {
 	private String _user;
 	private String _pass;

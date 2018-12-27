@@ -5,23 +5,23 @@ import java.util.Scanner;
 import org.table.booking.domain.Login;
 
 /*********************************************************************
-*
-* Class Name: IU_Login
-* Author/s name: 
-* 				 @author Sergio Herrera Piqueras
-* 				 @author Juan Mena Patón
-* 				 @author Pablo Rodríguez Solera 
-* 				 @author Daniel Martínez Santiago.
-* Release/Creation date: 25/12/2018
-* Class version: 
-* 				 @version 1.0
-* Class description: This class is the interface for the Login operations.
-*
-**********************************************************************
-*/
+ *
+ * Class Name: IU_Login Author/s name:
+ * 
+ * @author Sergio Herrera Piqueras
+ * @author Juan Mena Patón
+ * @author Pablo Rodríguez Solera
+ * @author Daniel Martínez Santiago. Release/Creation date:
+ *         25/12/2018 Class version:
+ * @version 1.0 Class description: This class is the
+ *          interface for the Login operations.
+ *
+ **********************************************************************
+ */
 public class IU_Login {
 	/**
-	 * @param args - The array of Strings that contains the arguments of our program.
+	 * @param args - The array of Strings that contains the
+	 *             arguments of our program.
 	 */
 	public static void main(final String[] args) {
 		while (start() == -1) {
@@ -30,33 +30,36 @@ public class IU_Login {
 	}
 
 	/*********************************************************************
-	*
-	* Method name: start
-	*
-	* Name of the original author (if the module author is different
-	* than the author of the file): The authors do not change.
-	*
-	* Description of the Method: The method checks if the credentials are correct, and makes the login.
-	* 							 It also reports the result both to the user and to the system.
-	*
-	* Calling arguments:
-	* 
-	* None
-	*
-	* Return value:
-	*
-	* @return 0 - If the credentials are correct.
-	* @return -1 - If the credentials are not correct.
-	*
-	* Required Files: 
-	* 
-	* None.
-	*
-	* List of Checked Exceptions and an indication of when each exception
-	* is thrown.
-	*
-	* This method does not throw any exceptions.
-	*********************************************************************/
+	 *
+	 * Method name: start
+	 *
+	 * Name of the original author (if the module author is
+	 * different than the author of the file): The authors
+	 * do not change.
+	 *
+	 * Description of the Method: The method checks if the
+	 * credentials are correct, and makes the login. It also
+	 * reports the result both to the user and to the
+	 * system.
+	 *
+	 * Calling arguments:
+	 * 
+	 * None
+	 *
+	 * Return value:
+	 *
+	 * @return 0 - If the credentials are correct.
+	 * @return -1 - If the credentials are not correct.
+	 *
+	 *         Required Files:
+	 * 
+	 *         None.
+	 *
+	 *         List of Checked Exceptions and an indication
+	 *         of when each exception is thrown.
+	 *
+	 *         This method does not throw any exceptions.
+	 *********************************************************************/
 	public static int start() {
 		Scanner read = new Scanner(System.in, "UTF-8");
 		String name, pass;

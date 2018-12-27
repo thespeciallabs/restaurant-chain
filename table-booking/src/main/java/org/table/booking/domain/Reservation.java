@@ -1,20 +1,19 @@
 package org.table.booking.domain;
 
 /*********************************************************************
-*
-* Class Name: Reservation
-* Author/s name: 
-* 				 @author Sergio Herrera Piqueras
-* 				 @author Juan Mena Patón
-* 				 @author Pablo Rodríguez Solera 
-* 				 @author Daniel Martínez Santiago.
-* Release/Creation date: 25/12/2018
-* Class version: 
-* 				 @version 1.0
-* Class description: This class holds all the parameters of our "Reservation" object.
-*
-**********************************************************************
-*/
+ *
+ * Class Name: Reservation Author/s name:
+ * 
+ * @author Sergio Herrera Piqueras
+ * @author Juan Mena Patón
+ * @author Pablo Rodríguez Solera
+ * @author Daniel Martínez Santiago. Release/Creation date:
+ *         25/12/2018 Class version:
+ * @version 1.0 Class description: This class holds all the
+ *          parameters of our "Reservation" object.
+ *
+ **********************************************************************
+ */
 public class Reservation {
 	private int _reservationID;
 	private String _tableID;
@@ -25,11 +24,16 @@ public class Reservation {
 	private ReservationDAO _reservationDAO = new ReservationDAO();
 
 	/**
-	 * @param _reservationID - The unique ID of the Reservation object.
-	 * @param _tableID - The ID of the Table object that is related with the Reservation.
-	 * @param _reservation_hour - The hour when the reservation is committed.
-	 * @param _diners - The number of diners that are going to assist.
-	 * @param _turn - The turn of the diners.
+	 * @param _reservationID    - The unique ID of the
+	 *                          Reservation object.
+	 * @param _tableID          - The ID of the Table object
+	 *                          that is related with the
+	 *                          Reservation.
+	 * @param _reservation_hour - The hour when the
+	 *                          reservation is committed.
+	 * @param _diners           - The number of diners that
+	 *                          are going to assist.
+	 * @param _turn             - The turn of the diners.
 	 */
 	public Reservation(final int _reservationID,
 			final String _tableID,
@@ -44,7 +48,7 @@ public class Reservation {
 	}
 
 	/**
-	 *  Empty constructor.
+	 * Empty constructor.
 	 */
 	public Reservation() {
 
@@ -73,7 +77,8 @@ public class Reservation {
 	}
 
 	/**
-	 * @param _reservationID - The unique ID of the Reservation object.
+	 * @param _reservationID - The unique ID of the
+	 *                       Reservation object.
 	 */
 	public final void set_reservationID(
 			final int _reservationID) {
@@ -81,14 +86,16 @@ public class Reservation {
 	}
 
 	/**
-	 * @return - The ID of the Table object that is related with the Reservation.
+	 * @return - The ID of the Table object that is related
+	 *         with the Reservation.
 	 */
 	public final String get_tableID() {
 		return _tableID;
 	}
 
 	/**
-	 * @param _tableID - The ID of the Table object that is related with the Reservation.
+	 * @param _tableID - The ID of the Table object that is
+	 *                 related with the Reservation.
 	 */
 	public final void set_tableID(final String _tableID) {
 		this._tableID = _tableID;
@@ -109,14 +116,16 @@ public class Reservation {
 	}
 
 	/**
-	 * @return - The number of diners that are going to assist.
+	 * @return - The number of diners that are going to
+	 *         assist.
 	 */
 	public final int get_diners() {
 		return _diners;
 	}
 
 	/**
-	 * @param _diners - The number of diners that are going to assist.
+	 * @param _diners - The number of diners that are going
+	 *                to assist.
 	 */
 	public final void set_diners(final int _diners) {
 		this._diners = _diners;
@@ -130,7 +139,8 @@ public class Reservation {
 	}
 
 	/**
-	 * @param _reservation_hour - The hour when the reservation is committed.
+	 * @param _reservation_hour - The hour when the
+	 *                          reservation is committed.
 	 */
 	public final void set_reservation_hour(
 			final String _reservation_hour) {

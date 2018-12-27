@@ -6,20 +6,20 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 /*********************************************************************
-*
-* Class Name: TableManager
-* Author/s name: 
-* 				 @author Sergio Herrera Piqueras
-* 				 @author Juan Mena Patón
-* 				 @author Pablo Rodríguez Solera 
-* 				 @author Daniel Martínez Santiago.
-* Release/Creation date: 25/12/2018
-* Class version: 
-* 				 @version 1.0
-* Class description: This class implements all the operations that involve both our Table object and our Reservation object.
-*
-**********************************************************************
-*/
+ *
+ * Class Name: TableManager Author/s name:
+ * 
+ * @author Sergio Herrera Piqueras
+ * @author Juan Mena Patón
+ * @author Pablo Rodríguez Solera
+ * @author Daniel Martínez Santiago. Release/Creation date:
+ *         25/12/2018 Class version:
+ * @version 1.0 Class description: This class implements all
+ *          the operations that involve both our Table
+ *          object and our Reservation object.
+ *
+ **********************************************************************
+ */
 public class TableManager {
 	private static final int THREE = 3;
 	private static final int FIVE = 5;
@@ -27,34 +27,43 @@ public class TableManager {
 	private static final int TWENTY = 20;
 
 	/*********************************************************************
-	*
-	* Method name: make_reservation
-	*
-	* Name of the original author (if the module author is different
-	* than the author of the file): The authors do not change.
-	*
-	* Description of the Method: The method, from the list of free tables, marks one as reserved
-	* 							 if a reservation already exists.
-	*
-	* Calling arguments:
-	* @param turn - The specific turn for the reservation.
-    * @param hour - The specific time for the reservation.
-    * @param diners - The number of diners.
-	*
-	* Return value:
-	*
-	* @return free - If the operation was correct, it returns the free tables.
-	* @return null  - If the read operation failed and did not complete.
-	*
-	* Required Files: 
-	* 
-	* None.
-	*
-	* List of Checked Exceptions and an indication of when each exception
-	* is thrown.
-	*
-	* @throws NoSuchElementException e - If there specific reservation didn't complete.
-	*********************************************************************/
+	 *
+	 * Method name: make_reservation
+	 *
+	 * Name of the original author (if the module author is
+	 * different than the author of the file): The authors
+	 * do not change.
+	 *
+	 * Description of the Method: The method, from the list
+	 * of free tables, marks one as reserved if a
+	 * reservation already exists.
+	 *
+	 * Calling arguments:
+	 * 
+	 * @param turn   - The specific turn for the
+	 *               reservation.
+	 * @param hour   - The specific time for the
+	 *               reservation.
+	 * @param diners - The number of diners.
+	 *
+	 *               Return value:
+	 *
+	 * @return free - If the operation was correct, it
+	 *         returns the free tables.
+	 * @return null - If the read operation failed and did
+	 *         not complete.
+	 *
+	 *         Required Files:
+	 * 
+	 *         None.
+	 *
+	 *         List of Checked Exceptions and an indication
+	 *         of when each exception is thrown.
+	 *
+	 * @throws NoSuchElementException e - If there specific
+	 *                                reservation didn't
+	 *                                complete.
+	 *********************************************************************/
 	public static Table make_reservation(final int turn,
 			final String hour, final int diners) {
 		Reservation r = new Reservation();
@@ -78,7 +87,8 @@ public class TableManager {
 	}
 
 	/**
-	 * @param r - The Reservation object that we need to create.
+	 * @param r - The Reservation object that we need to
+	 *          create.
 	 */
 	private static void createReservation(
 			final Reservation r) {
@@ -86,39 +96,47 @@ public class TableManager {
 	}
 
 	/**
-	 *  @throws UnsupportedOperationException - This operation is not supported.
+	 * @throws UnsupportedOperationException - This
+	 *                                       operation is
+	 *                                       not supported.
 	 */
 	public final void cancel_reservation() {
 		throw new UnsupportedOperationException();
 	}
 
 	/*********************************************************************
-	*
-	* Method name: assing_table
-	*
-	* Name of the original author (if the module author is different
-	* than the author of the file): The authors do not change.
-	*
-	* Description of the Method: The method assigns a specific already existing reservation to a table.
-	*
-	* Calling arguments:
-	* 
-	* @param resID - The Id of the reservation that we want to assign a table to.
-	*
-	* Return value:
-	*
-	* @return t - If the operation was correct.
-	* @return null  - If the read operation failed and did not complete.
-	*
-	* Required Files: 
-	* 
-	* None.
-	*
-	* List of Checked Exceptions and an indication of when each exception
-	* is thrown.
-	*
-	* @throws NullPointerException - If there is any kind of failure assigning the table.
-	*********************************************************************/
+	 *
+	 * Method name: assing_table
+	 *
+	 * Name of the original author (if the module author is
+	 * different than the author of the file): The authors
+	 * do not change.
+	 *
+	 * Description of the Method: The method assigns a
+	 * specific already existing reservation to a table.
+	 *
+	 * Calling arguments:
+	 * 
+	 * @param resID - The Id of the reservation that we want
+	 *              to assign a table to.
+	 *
+	 *              Return value:
+	 *
+	 * @return t - If the operation was correct.
+	 * @return null - If the read operation failed and did
+	 *         not complete.
+	 *
+	 *         Required Files:
+	 * 
+	 *         None.
+	 *
+	 *         List of Checked Exceptions and an indication
+	 *         of when each exception is thrown.
+	 *
+	 * @throws NullPointerException - If there is any kind
+	 *                              of failure assigning the
+	 *                              table.
+	 *********************************************************************/
 	public static Table assing_table(final int resID) {
 		Table t = new Table();
 		Reservation r = new Reservation();
@@ -185,32 +203,36 @@ public class TableManager {
 	}
 
 	/*********************************************************************
-	*
-	* Method name: readFree
-	*
-	* Name of the original author (if the module author is different
-	* than the author of the file): The authors do not change.
-	*
-	* Description of the Method: The method shows all the existing reservations.
-	*
-	* Calling arguments:
-	* 
-	* @param tableID - The ID of the table that we want to retrieve the reservations.
-	* 
-	* Return value:
-	*
-	* @return aux - If the operation was correct.
-	* @return null  - If the read operation failed and did not complete.
-	*
-	* Required Files: 
-	* 
-	* None.
-	*
-	* List of Checked Exceptions and an indication of when each exception
-	* is thrown.
-	*
-	* This method does not throw any exceptions.
-	*********************************************************************/
+	 *
+	 * Method name: readFree
+	 *
+	 * Name of the original author (if the module author is
+	 * different than the author of the file): The authors
+	 * do not change.
+	 *
+	 * Description of the Method: The method shows all the
+	 * existing reservations.
+	 *
+	 * Calling arguments:
+	 * 
+	 * @param tableID - The ID of the table that we want to
+	 *                retrieve the reservations.
+	 * 
+	 *                Return value:
+	 *
+	 * @return aux - If the operation was correct.
+	 * @return null - If the read operation failed and did
+	 *         not complete.
+	 *
+	 *         Required Files:
+	 * 
+	 *         None.
+	 *
+	 *         List of Checked Exceptions and an indication
+	 *         of when each exception is thrown.
+	 *
+	 *         This method does not throw any exceptions.
+	 *********************************************************************/
 	public static LinkedList<Reservation> show_reservations(
 			final String tableID) {
 		Reservation r = new Reservation();
@@ -228,32 +250,35 @@ public class TableManager {
 	 * @return
 	 */
 	/*********************************************************************
-	*
-	* Method name: show_table_state
-	*
-	* Name of the original author (if the module author is different
-	* than the author of the file): The authors do not change.
-	*
-	* Description of the Method: The method returns the Tables current state.
-	*
-	* Calling arguments:
-	* 
-	* None.
-	*
-	* Return value:
-	*
-	* @return aux - If the operation was correct.
-	* @return null  - If the read operation failed and did not complete.
-	*
-	* Required Files: 
-	* 
-	* None.
-	*
-	* List of Checked Exceptions and an indication of when each exception
-	* is thrown.
-	*
-	* This method does not throw any exceptions.
-	*********************************************************************/
+	 *
+	 * Method name: show_table_state
+	 *
+	 * Name of the original author (if the module author is
+	 * different than the author of the file): The authors
+	 * do not change.
+	 *
+	 * Description of the Method: The method returns the
+	 * Tables current state.
+	 *
+	 * Calling arguments:
+	 * 
+	 * None.
+	 *
+	 * Return value:
+	 *
+	 * @return aux - If the operation was correct.
+	 * @return null - If the read operation failed and did
+	 *         not complete.
+	 *
+	 *         Required Files:
+	 * 
+	 *         None.
+	 *
+	 *         List of Checked Exceptions and an indication
+	 *         of when each exception is thrown.
+	 *
+	 *         This method does not throw any exceptions.
+	 *********************************************************************/
 	public static LinkedList<Table> show_table_state() {
 		Table t = new Table();
 		LinkedList<Table> aux;
@@ -266,32 +291,36 @@ public class TableManager {
 	}
 
 	/*********************************************************************
-	*
-	* Method name: show_free_table_state
-	*
-	* Name of the original author (if the module author is different
-	* than the author of the file): The authors do not change.
-	*
-	* Description of the Method: The method returns the free Tables current state.
-	*
-	* Calling arguments:
-	* 
-	* @param r - The specific reservation that we want to know about.
-	*
-	* Return value:
-	*
-	* @return aux - If the operation was correct.
-	* @return null  - If the read operation failed and did not complete.
-	*
-	* Required Files: 
-	* 
-	* None.
-	*
-	* List of Checked Exceptions and an indication of when each exception
-	* is thrown.
-	*
-	* This method does not throw any exceptions.
-	*********************************************************************/
+	 *
+	 * Method name: show_free_table_state
+	 *
+	 * Name of the original author (if the module author is
+	 * different than the author of the file): The authors
+	 * do not change.
+	 *
+	 * Description of the Method: The method returns the
+	 * free Tables current state.
+	 *
+	 * Calling arguments:
+	 * 
+	 * @param r - The specific reservation that we want to
+	 *          know about.
+	 *
+	 *          Return value:
+	 *
+	 * @return aux - If the operation was correct.
+	 * @return null - If the read operation failed and did
+	 *         not complete.
+	 *
+	 *         Required Files:
+	 * 
+	 *         None.
+	 *
+	 *         List of Checked Exceptions and an indication
+	 *         of when each exception is thrown.
+	 *
+	 *         This method does not throw any exceptions.
+	 *********************************************************************/
 	public static LinkedList<Table> show_free_table_state(
 			final Reservation r) {
 		Table t = new Table();
