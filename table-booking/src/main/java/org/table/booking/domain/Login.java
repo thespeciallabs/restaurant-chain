@@ -3,7 +3,7 @@ package org.table.booking.domain;
 /*********************************************************************
  *
  * Class Name: Login Author/s name:
- * 
+ *
  * @author Sergio Herrera Piqueras
  * @author Juan Mena Patón
  * @author Pablo Rodríguez Solera
@@ -47,7 +47,7 @@ public class Login {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public Login() {
 		super();

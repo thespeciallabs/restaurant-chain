@@ -3,7 +3,7 @@ package org.table.booking.domain;
 /*********************************************************************
  *
  * Class Name: Reservation Author/s name:
- * 
+ *
  * @author Sergio Herrera Piqueras
  * @author Juan Mena Patón
  * @author Pablo Rodríguez Solera

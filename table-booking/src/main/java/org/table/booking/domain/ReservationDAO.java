@@ -8,7 +8,7 @@ import org.table.booking.persistence.DBBroker;
 /*********************************************************************
  *
  * Class Name: ReservationDAO Author/s name:
- * 
+ *
  * @author Sergio Herrera Piqueras
  * @author Juan Mena Patón
  * @author Pablo Rodríguez Solera
@@ -23,7 +23,8 @@ import org.table.booking.persistence.DBBroker;
  **********************************************************************
  */
 public class ReservationDAO {
-	private LinkedList<Reservation> _reservationList = new LinkedList<Reservation>();
+	private LinkedList<Reservation> _reservationList = 
+			new LinkedList<Reservation>();
 	private Reservation _reservation;
 
 	/**
@@ -69,7 +70,7 @@ public class ReservationDAO {
 	 * the user.
 	 *
 	 * Calling arguments:
-	 * 
+	 *
 	 * @param aR - The reservation object that the user
 	 *           wants to delete.
 	 *
@@ -77,10 +78,10 @@ public class ReservationDAO {
 	 *
 	 * @return -1 - If the delete operation failed and did
 	 *         not complete.
-	 * @return 0 - If the operation was correct.
+	 * 		   0 - If the operation was correct.
 	 *
 	 *         Required Files:
-	 * 
+	 *
 	 *         None.
 	 *
 	 *         List of Checked Exceptions and an indication
@@ -92,7 +93,8 @@ public class ReservationDAO {
 	 *********************************************************************/
 	public final int delete(final Reservation aR) {
 		final String sql = String.format(
-				"DELETE FROM reservation WHERE reservationID= %d;",
+				"DELETE FROM reservation "
+				+ "WHERE reservationID= %d;",
 				aR.get_reservationID());
 		try {
 			DBBroker.getAgente().delete(sql);
@@ -116,7 +118,7 @@ public class ReservationDAO {
 	 * the user, in order to add it to the Database.
 	 *
 	 * Calling arguments:
-	 * 
+	 *
 	 * @param aR - The reservation object that the user
 	 *           wants to add to the Database.
 	 *
@@ -124,10 +126,10 @@ public class ReservationDAO {
 	 *
 	 * @return -1 - If the create operation failed and did
 	 *         not complete.
-	 * @return 0 - If the operation was correct.
+	 * 		   0 - If the operation was correct.
 	 *
 	 *         Required Files:
-	 * 
+	 *
 	 *         None.
 	 *
 	 *         List of Checked Exceptions and an indication
@@ -139,7 +141,8 @@ public class ReservationDAO {
 	 *********************************************************************/
 	public final int insert(final Reservation aR) {
 		final String sql = String.format(
-				"INSERT INTO reservation(tableID,reservation_hour,diners,turn) VALUES('%s','%s',%d,%d);",
+				"INSERT INTO reservation(tableID,reservation_hour"
+				+ ",diners,turn) VALUES('%s','%s',%d,%d);",
 				aR.get_tableID(), aR.get_reservation_hour(),
 				aR.get_diners(), aR.get_turn());
 		try {
@@ -164,7 +167,7 @@ public class ReservationDAO {
 	 * the user already exists in the Database.
 	 *
 	 * Calling arguments:
-	 * 
+	 *
 	 * @param aR - The reservation object that the user
 	 *           created.
 	 *
@@ -172,10 +175,10 @@ public class ReservationDAO {
 	 *
 	 * @return -1 - If the read operation failed and did not
 	 *         complete.
-	 * @return 0 - If the operation was correct.
+	 * 		   0 - If the operation was correct.
 	 *
 	 *         Required Files:
-	 * 
+	 *
 	 *         None.
 	 *
 	 *         List of Checked Exceptions and an indication
@@ -186,7 +189,8 @@ public class ReservationDAO {
 	 *********************************************************************/
 	public final int read(final Reservation aR) {
 		final String sql = String.format(
-				"SELECT * FROM reservation WHERE reservationID='%s';",
+				"SELECT * FROM reservation "
+				+ "WHERE reservationID='%s';",
 				aR.get_reservationID());
 		try {
 			ResultSet resultado = DBBroker.getAgente()
@@ -219,7 +223,7 @@ public class ReservationDAO {
 	 * object, given it's ID.
 	 *
 	 * Calling arguments:
-	 * 
+	 *
 	 * @param tableID - The ID of the Table object that the
 	 *                user wants to consult.
 	 *
@@ -227,10 +231,10 @@ public class ReservationDAO {
 	 *
 	 * @return -1 - If the read operation failed and did not
 	 *         complete.
-	 * @return 0 - If the operation was correct.
+	 * 		   0 - If the operation was correct.
 	 *
 	 *         Required Files:
-	 * 
+	 *
 	 *         None.
 	 *
 	 *         List of Checked Exceptions and an indication
@@ -275,17 +279,17 @@ public class ReservationDAO {
 	 * created.
 	 *
 	 * Calling arguments:
-	 * 
+	 *
 	 * None.
 	 *
 	 * Return value:
 	 *
 	 * @return -1 - If the read operation failed and did not
 	 *         complete.
-	 * @return 0 - If the operation was correct.
+	 * 		   0 - If the operation was correct.
 	 *
 	 *         Required Files:
-	 * 
+	 *
 	 *         None.
 	 *
 	 *         List of Checked Exceptions and an indication
